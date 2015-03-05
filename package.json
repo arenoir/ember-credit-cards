@@ -1,7 +1,7 @@
 {
-  "name": "ember-credit-card-form",
+  "name": "ember-credit-cards",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A credit card utility library and form elements.",
   "directories": {
     "doc": "doc",
     "test": "tests"

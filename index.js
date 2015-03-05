@@ -2,5 +2,5 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-credit-card-form'
+  name: 'ember-credit-cards'
 };
