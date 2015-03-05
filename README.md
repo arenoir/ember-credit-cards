@@ -4,6 +4,8 @@
 
 A credit card utility library and form elements. Most of the utilty functions are copied from the [jquery.payment](https://github.com/stripe/jquery.payment) lib.
 
+Checkout the [demo](http://arenoir.github.io/ember-credit-cards/).
+
 ## Components
 
 ### credit-card-form

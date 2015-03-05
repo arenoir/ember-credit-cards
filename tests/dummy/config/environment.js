@@ -40,7 +40,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    baseURL: '/ember-credit-cards/'
   }
 
   return ENV;
