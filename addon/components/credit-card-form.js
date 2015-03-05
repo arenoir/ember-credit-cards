@@ -15,6 +15,10 @@ export default Ember.Component.extend({
   cvc: null,
   isValid: computed.and('nameValid', 'numberValid', 'expirationValid', 'cvcValid'),
 
+  becameValid: function() {
+    this.sendAction('on-validate', this.get('isValid'));
+  }.observes('isValid').on('init'),
+
   nameValid: computed('name', function() {
     var name = this.get('name');
 

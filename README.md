@@ -18,6 +18,57 @@ Attributes:
 * month
 * year
 
+### credit-card-form
+Full credit card form with validations and formatting.
+
+Attributes: 
+  * number
+  * name
+  * month
+  * year
+  * cvc
+
+Events:
+  * on-validate
+
+
+Example:
+
+``` html
+//templates/credit-cards/new.hbs
+
+  <div>
+    {{ credit-card-form 
+       number=attrs.number 
+       name=attrs.name 
+       month=attrs.month 
+       year=attrs.year 
+       cvc=attrs.cvc 
+       on-validate="validate"
+    }}
+  </div>
+
+  <button {{action "save"}} {{bind-attr disabled="disabled"}}>
+    Save
+  </button>
+
+```
+
+
+``` javascript
+//routes/credit-cards/new.js
+
+import Ember from 'ember';
+
+export default Ember.Route.extend({
+  actions: {
+    validate: function(bool) {
+      this.controller.set('disabled', !bool);
+    }
+  }
+});
+```
+
 
 ### input-credit-card-number
 Formats credit card number on entry. Discards non-numeric and extra characters. Parses sets number attribute. 

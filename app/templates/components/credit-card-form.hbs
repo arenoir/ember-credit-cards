@@ -1,4 +1,4 @@
-<div class="row">
+<div class="clearfix">
   <div {{bind-attr class="numberValid:has-success :form-group :cc-number"}}>
     <label class="control-label">Card Number</label>
     {{input-credit-card-number number=number class="form-control"}}
@@ -10,7 +10,7 @@
   </div>
 </div>
 
-<div class="row">
+<div class="clearfix">
   <div {{bind-attr class="nameValid:has-success :form-group :cc-name"}}>
     <label class="control-label">Name on Card</label>
     {{input type="text" value=name class="form-control"}}
