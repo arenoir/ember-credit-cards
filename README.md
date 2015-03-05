@@ -9,16 +9,6 @@ Checkout the [demo](http://arenoir.github.io/ember-credit-cards/).
 ## Components
 
 ### credit-card-form
-
-Attributes:
-
-* name
-* number
-* cvc
-* month
-* year
-
-### credit-card-form
 Full credit card form with validations and formatting.
 
 Attributes: 
