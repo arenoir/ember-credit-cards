@@ -21,7 +21,6 @@ function validateNumber(num) {
 }
 
 
-
 function validateExpiration(month, year) {
   
   if (typeof month === 'string') {

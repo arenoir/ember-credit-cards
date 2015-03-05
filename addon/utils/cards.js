@@ -131,11 +131,9 @@ function cardTypeFromNumber(num) {
   return card.type;
 }
 
-
 export default {
   cardType: cardTypeFromNumber,
   fromNumber: cardFromNumber,
   fromType: cardFromType,
   luhnCheck: luhnCheck
 };
-

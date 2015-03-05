@@ -11,7 +11,6 @@ export default Ember.Component.extend({
   month: null,
   year: null,
   cvc: null,
-
   isValid: computed.and('nameValid', 'numberValid', 'expirationValid', 'cvcValid'),
 
   nameValid: computed('name', function() {
@@ -34,9 +33,6 @@ export default Ember.Component.extend({
     var month = this.get('month');
     var year  = this.get('year');
 
-    console.log(month);
-    console.log(year);
-
     return Validations.validateExpiration(month, year);
   }),
 
@@ -46,7 +42,6 @@ export default Ember.Component.extend({
 
     return Validations.validateCVC(cvc, type);
   }),
-
 
   type: computed('number', function() {
     var number = this.get('number');

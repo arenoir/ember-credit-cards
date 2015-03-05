@@ -49,7 +49,6 @@ export default Ember.TextField.extend({
     var year  = this.get('year');
 
     if (arguments.length > 1) {
-
       var parsed = parseInput(value);
 
       month = parsed[0];
