@@ -17,6 +17,8 @@ Attributes:
   * month
   * year
   * cvc
+  * zipcode
+  * zipcodeRequired
 
 Events:
   * on-validate
@@ -82,6 +84,14 @@ Attributes:
   * year
 
 
+### input-credit-card-zipcode
+
+Validates and formats zip code. Discards non-numeric and extra characters. Sets zipcode attribute. 
+
+Attributes:
+  * zipcode
+
+
 ## Validations
 
 ### validateNumber(number)
@@ -136,4 +146,22 @@ validations.validateExpiration('05', '2015'); //=> true
 validations.validateExpiration('05', '05'); //=> false
 ```
 
+### validateZipcode(number)
+
+Validates a zip code:
+
+* Validates 5 digit optional + 4 zipcode
+
+Example:
+
+``` javascript
+import validations from 'ember-credit-cards/utils/validations';
+
+validations.validateZipcode('94611'); //=> true
+validations.validateZipcode('946'); //=> false
+validations.validateZipcode('94611-2544'); //=> true
+validations.validateZipcode('946112544'); //=> true
+validations.validateZipcode('94611-24'); //=> false
+
+```
 

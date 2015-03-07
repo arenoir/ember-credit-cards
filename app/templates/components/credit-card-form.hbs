@@ -22,6 +22,14 @@
   </div>
 </div>
 
+{{#if zipcodeRequired}}
+  <div {{bind-attr class="zipcodeValid:has-success :form-group :cc-expiration"}}>
+    <label class="control-label">Zip Code</label>
+    {{input-credit-card-zipcode zipcode=zipcode class="form-control"}}
+  </div>
+{{/if}}
+
+
 <div class="type">
   {{type}}
 </div>

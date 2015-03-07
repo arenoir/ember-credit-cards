@@ -1,12 +1,12 @@
 import Ember from 'ember';
-import formatNumber from 'ember-credit-cards/utils/format-number';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
+import formatters from 'ember-credit-cards/utils/formatters';
 import cards from 'ember-credit-cards/utils/cards';
 
 var cardFromNumber = cards.fromNumber;
 var computed = Ember.computed;
 
-function numberValid(value) {
+function inputValid(value) {
   value = (value + '').replace(/\D/g, '');
 
   var card = cardFromNumber(value);
@@ -27,22 +27,17 @@ export default Ember.TextField.extend({
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
-    var el = this.$();
-
-    if (hasTextSelected(el)) {
-      return;
-    }
-
     if (!/^\d+$/.test(digit)) {
       return false;
     }
-
-    var value = el.val() + digit;
-
-    if (!numberValid(value)) {
-      return false;
+    
+    var el = this.$();
+    if (hasTextSelected(el)) {
+      return true;
     }
 
+    var value = el.val() + digit;
+    return inputValid(value);
   },
 
 
@@ -54,7 +49,7 @@ export default Ember.TextField.extend({
       this.set('number', value);
     }
 
-    return formatNumber(number);
+    return formatters.formatNumber(number);
   })
 
 });

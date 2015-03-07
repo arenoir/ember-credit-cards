@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import formatExpiration from 'ember-credit-cards/utils/format-expiration';
+import formatters from 'ember-credit-cards/utils/formatters';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 
 var computed = Ember.computed;
@@ -44,6 +44,22 @@ export default Ember.TextField.extend({
   placeholder: '•• / ••',
   autocomplete: 'cc-exp',
 
+  keyPress: function(e) {
+    var digit = String.fromCharCode(e.which);
+    if (!/^\d+$/.test(digit)) {
+      return false;
+    }
+    
+    var el = this.$();
+    if (hasTextSelected(el)) {
+      return true;
+    }
+    
+    var value = el.val() + digit;
+    return inputValid(value);
+  },
+
+
   value: computed('month', 'year', function(key, value) {
     var month = this.get('month');
     var year  = this.get('year');
@@ -60,28 +76,6 @@ export default Ember.TextField.extend({
       });
     } 
 
-    return formatExpiration(month, year);
-  }),
-
-
-  keyPress: function(e) {
-
-    var digit = String.fromCharCode(e.which);
-    var el = this.$();
-
-    if (hasTextSelected(el)) {
-      return;
-    }
-
-    if (!/^\d+$/.test(digit)) {
-      return false;
-    }
-
-    var value = el.val() + digit;
-
-    if (!inputValid(value)) {
-      return false;
-    }
-  }
-
+    return formatters.formatExpiration(month, year);
+  })
 });

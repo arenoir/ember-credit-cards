@@ -11,18 +11,17 @@ export default Ember.TextField.extend({
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
-    var el = this.$();
-
-    if (hasTextSelected(el)) {
-      return;
-    }
-
     if (!/^\d+$/.test(digit)) {
       return false;
     }
-
+    
+    var el = this.$();
+    if (hasTextSelected(el)) {
+      return true;
+    }
+    
     var value = el.val() + digit;
-
+    
     return value.length <= 4;
   },
 

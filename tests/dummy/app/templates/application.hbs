@@ -21,7 +21,13 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="cc-container">
-        {{credit-card-form }}
+        {{credit-card-form zipcodeRequired=zipcodeRequired}}
+        <div class="checkbox">
+          <label>
+            {{input type="checkbox" zipcodeRequired=zipcodeRequired}} require zip code.
+          </label>
+        </div>
+
       </div> 
 
       <dl>

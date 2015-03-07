@@ -13,7 +13,10 @@ export default Ember.Component.extend({
   month: null,
   year: null,
   cvc: null,
-  isValid: computed.and('nameValid', 'numberValid', 'expirationValid', 'cvcValid'),
+  zipcode: null,
+  zipcodeRequired: false,
+
+  isValid: computed.and('nameValid', 'numberValid', 'expirationValid', 'cvcValid', 'zipcodeValid'),
 
   becameValid: function() {
     this.sendAction('on-validate', this.get('isValid'));
@@ -47,6 +50,16 @@ export default Ember.Component.extend({
     var type = this.get('type');
 
     return Validations.validateCVC(cvc, type);
+  }),
+
+  zipcodeValid: computed('zipcodeRequired', 'zipcode', function() {
+    if (this.get('zipcodeRequired')) {
+      var zip = this.get('zipcode');
+
+      return Validations.validateZipcode(zip);
+    }
+    
+    return true;
   }),
 
   type: computed('number', function() {

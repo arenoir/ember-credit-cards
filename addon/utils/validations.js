@@ -79,8 +79,25 @@ function validateCVC(cvc, type) {
 }
 
 
+function validateZipcode(zip) {
+  zip = (zip + '').replace(/\s+|-/g, '');
+
+  var match = /^(\d{5})(\d{0,4})$/g.exec(zip);
+
+  if (match) {
+    if (match[2]) {
+      return match[2].length === 4;
+    }
+    return match[1].length === 5;
+  }
+
+  return false;
+}
+
+
 export default {
   validateNumber: validateNumber,
   validateExpiration: validateExpiration,
-  validateCVC: validateCVC
+  validateCVC: validateCVC,
+  validateZipcode: validateZipcode
 };

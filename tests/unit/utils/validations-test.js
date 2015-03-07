@@ -59,3 +59,19 @@ test('validateExpiration', function(assert) {
   assert.equal( validate('05', '30'), true, 'should support year shorthand');
 
 });
+
+
+test('validateZipcode', function(assert) {
+  var validate = validations.validateZipcode;
+
+  assert.equal( validate(94611), true, 'returns true if valid zip plus 4');
+  assert.equal( validate("94611"), true, 'returns true if valid string');
+  assert.equal( validate("946112370"), true, 'returns true if valid zip plus 4');
+  assert.equal( validate(946112370), true, 'returns true if valid zip plus 4');
+  assert.equal( validate("94611-2370"), true, 'returns true if valid zip plus 4 with dash');
+
+  assert.equal( validate(956), false, 'returns false if too short');
+  assert.equal( validate(95666666), false, 'returns false if too long');
+  assert.equal( validate(''), false, 'returns false if blank');
+  assert.equal( validate(), false, 'returns false if undefined');
+});
