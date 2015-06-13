@@ -2,9 +2,9 @@ import Ember from 'ember';
 import Validations from 'ember-credit-cards/utils/validations';
 import Cards from 'ember-credit-cards/utils/cards';
 
-var computed = Ember.computed;
+const {Component, computed, observer } = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: 'form',
   classNames: ['credit-card-form'],
   classNameBindings: ['isValid'],
@@ -18,9 +18,9 @@ export default Ember.Component.extend({
 
   isValid: computed.and('nameValid', 'numberValid', 'expirationValid', 'cvcValid', 'zipcodeValid'),
 
-  becameValid: function() {
+  becameValid: observer('isValid', function() {
     this.sendAction('on-validate', this.get('isValid'));
-  }.observes('isValid').on('init'),
+  }),
 
   nameValid: computed('name', function() {
     var name = this.get('name');

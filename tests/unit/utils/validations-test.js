@@ -1,4 +1,4 @@
-import validations from 'ember-credit-cards/utils/validations.js';
+import validations from 'ember-credit-cards/utils/validations';
 import { module, test } from 'qunit';
 
 module('validations');

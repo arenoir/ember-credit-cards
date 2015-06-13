@@ -1,4 +1,7 @@
+import Ember from 'ember';
 import cards from 'ember-credit-cards/utils/cards';
+
+const {A} = Ember;
 
 var cardFromNumber = cards.fromNumber;
 var cardFromType = cards.fromType;
@@ -13,11 +16,13 @@ function validateNumber(num) {
 
   var card = cardFromNumber(num);
 
-  if (!card) {
-    return false;
+  if (card) {
+    var cardNumbers = new A(card.length);
+
+    return ( cardNumbers.contains(num.length)) && (card.luhn === false || luhnCheck(num));
   }
   
-  return (card.length.contains(num.length)) && (card.luhn === false || luhnCheck(num));
+  return false;  
 }
 
 
@@ -72,7 +77,9 @@ function validateCVC(cvc, type) {
   var card = cardFromType(type);
 
   if (card) {
-    return card.cvcLength.contains(cvc.length);
+    var cvcNumbers = new A(card.cvcLength);
+    
+    return cvcNumbers.contains(cvc.length);
   } else {
     return cvc.length >= 3 && cvc.length <= 4;
   }
