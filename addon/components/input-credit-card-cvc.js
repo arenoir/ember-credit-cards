@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
+import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
-var computed = Ember.computed;
+const {TextField, computed} = Ember;
 
-export default Ember.TextField.extend({
+export default TextField.extend({
   classNames: ['input-credit-card-cvc'],
   autocomplete: 'off',
   placeholder: '•••',
@@ -11,7 +12,8 @@ export default Ember.TextField.extend({
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
-    if (!/^\d+$/.test(digit)) {
+    
+    if (!isDigitKeypress(e)) {
       return false;
     }
     

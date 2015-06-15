@@ -1,8 +1,9 @@
 import Ember from 'ember';
 import formatters from 'ember-credit-cards/utils/formatters';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
+import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
-var computed = Ember.computed;
+const {TextField, computed} = Ember;
 
 function inputValid(value) {
   if (!value) {
@@ -37,7 +38,7 @@ function parseInput(value) {
 }
 
 
-export default Ember.TextField.extend({
+export default TextField.extend({
   classNames: ['input-credit-card-expiration'],
   month: null,
   year: null,
@@ -46,11 +47,13 @@ export default Ember.TextField.extend({
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
-    if (!/^\d+$/.test(digit)) {
+    
+    if (!isDigitKeypress(e)) {
       return false;
     }
     
     var el = this.$();
+
     if (hasTextSelected(el)) {
       return true;
     }
