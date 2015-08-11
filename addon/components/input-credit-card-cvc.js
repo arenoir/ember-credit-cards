@@ -1,8 +1,9 @@
+import computed from 'ember-new-computed';
 import Ember from 'ember';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
-const {TextField, computed} = Ember;
+const {TextField} = Ember;
 
 export default TextField.extend({
   classNames: ['input-credit-card-cvc'],
@@ -28,15 +29,16 @@ export default TextField.extend({
   },
 
 
-  value: computed('cvc', function(key, value) {
-    var number = this.get('cvc');
+  value: computed('cvc', {
+    get() {
+      var number = this.get('cvc');
+      return number;
+    },
 
-    if (arguments.length > 1) {
-      number = value.replace(/\D/g, '').slice(0, 4);
+    set(key, value) {
+      var number = value.replace(/\D/g, '').slice(0, 4);
       this.set('cvc', value);
+      return number;
     }
-
-    return number;
   })
-
 });

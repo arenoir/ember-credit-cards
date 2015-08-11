@@ -1,3 +1,4 @@
+import computed from 'ember-new-computed';
 import Ember from 'ember';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import formatters from 'ember-credit-cards/utils/formatters';
@@ -5,7 +6,7 @@ import cards from 'ember-credit-cards/utils/cards';
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
 const cardFromNumber = cards.fromNumber;
-const {TextField, computed} = Ember;
+const {TextField} = Ember;
 
 function inputValid(value) {
   value = (value + '').replace(/\D/g, '');
@@ -42,15 +43,17 @@ export default TextField.extend({
   },
 
 
-  value: computed('number', function(key, value) {
-    var number = this.get('number');
+  value: computed('number', {
+    get() {
+      var number = this.get('number');
+      return formatters.formatNumber(number);
+    },
 
-    if (arguments.length > 1) {
-      number = value;
+    set(key, value) {
+      var number = value;
       this.set('number', value);
+
+      return formatters.formatNumber(number);
     }
-
-    return formatters.formatNumber(number);
   })
-
 });
