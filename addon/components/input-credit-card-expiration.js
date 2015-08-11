@@ -1,9 +1,10 @@
+import computed from 'ember-new-computed';
 import Ember from 'ember';
 import formatters from 'ember-credit-cards/utils/formatters';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
-const {TextField, computed} = Ember;
+const {TextField} = Ember;
 
 function inputValid(value) {
   if (!value) {
@@ -62,23 +63,25 @@ export default TextField.extend({
     return inputValid(value);
   },
 
+  value: computed('month', 'year', {
+    get() {
+      var month = this.get('month');
+      var year  = this.get('year');
 
-  value: computed('month', 'year', function(key, value) {
-    var month = this.get('month');
-    var year  = this.get('year');
+      return formatters.formatExpiration(month, year);
+    },
 
-    if (arguments.length > 1) {
+    set(key, value) {
       var parsed = parseInput(value);
-
-      month = parsed[0];
-      year = parsed[1];
+      var month = parsed[0];
+      var year = parsed[1];
 
       this.setProperties({
         month: month,
         year: year
       });
-    } 
 
-    return formatters.formatExpiration(month, year);
+      return formatters.formatExpiration(month, year);
+    }
   })
 });
