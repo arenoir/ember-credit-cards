@@ -12,30 +12,27 @@ export default TextField.extend({
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
-    
+
     if (!isDigitKeypress(e)) {
       return false;
     }
-    
+
     var el = this.$();
     if (hasTextSelected(el)) {
       return true;
     }
-    
+
     var value = el.val() + digit;
     return value.length <= 10;
   },
 
   value: computed('zipcode', {
     get() {
-      var zipcode = this.get('zipcode');
-      return formatters.formatZipcode(zipcode);
+      return formatters.formatZipcode(this.get('zipcode'));
     },
-
     set(key, value) {
-      var zipcode = value;
       this.set('zipcode', value);
-      return formatters.formatZipcode(zipcode);
+      return formatters.formatZipcode(value);
     }
   })
 });

@@ -32,7 +32,7 @@ export default TextField.extend({
       return false;
     }
 
-    var digit = String.fromCharCode(e.which);  
+    var digit = String.fromCharCode(e.which);
     var el = this.$();
     if (hasTextSelected(el)) {
       return true;
@@ -45,15 +45,11 @@ export default TextField.extend({
 
   value: computed('number', {
     get() {
-      var number = this.get('number');
-      return formatters.formatNumber(number);
+      return formatters.formatNumber(this.get('number'));
     },
-
     set(key, value) {
-      var number = value;
       this.set('number', value);
-
-      return formatters.formatNumber(number);
+      return formatters.formatNumber(value);
     }
   })
 });

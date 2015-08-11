@@ -13,31 +13,30 @@ export default TextField.extend({
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
-    
+
     if (!isDigitKeypress(e)) {
       return false;
     }
-    
+
     var el = this.$();
     if (hasTextSelected(el)) {
       return true;
     }
-    
+
     var value = el.val() + digit;
-    
+
     return value.length <= 4;
   },
 
 
   value: computed('cvc', {
     get() {
-      var number = this.get('cvc');
-      return number;
+      return this.get('cvc');
     },
-
-    set(key, value) {
-      var number = value.replace(/\D/g, '').slice(0, 4);
-      this.set('cvc', value);
+    set(propertyName, newValue) {
+      let number = newValue.replace(/\D/g, '').slice(0, 4);
+      this.set('cvc', newValue);
+      
       return number;
     }
   })
