@@ -1,29 +1,29 @@
 <div class="clearfix">
-  <div {{bind-attr class="numberValid:has-success :form-group :cc-number"}}>
+  <div class="{{if numberValid 'has-success'}} form-group cc-number">
     <label class="control-label">Card Number</label>
     {{input-credit-card-number number=number class="form-control"}}
   </div>
 
-  <div {{bind-attr class="cvcValid:has-success :form-group :cc-cvc"}}>
+  <div class="{{if cvcValid 'has-success'}} form-group cc-cvc">
     <label class="control-label">Security Code</label>
     {{input-credit-card-cvc cvc=cvc class="form-control"}}
   </div>
 </div>
 
 <div class="clearfix">
-  <div {{bind-attr class="nameValid:has-success :form-group :cc-name"}}>
+  <div class="{{if nameValid 'has-success'}} form-group cc-name">
     <label class="control-label">Name on Card</label>
     {{input type="text" value=name class="form-control"}}
   </div>
 
-  <div {{bind-attr class="expirationValid:has-success :form-group :cc-expiration"}}>
+  <div class="{{if expirationValid 'has-success'}} form-group cc-expiration">
     <label class="control-label">Expiration</label>
     {{input-credit-card-expiration month=month year=year class="form-control"}}
   </div>
 </div>
 
 {{#if zipcodeRequired}}
-  <div {{bind-attr class="zipcodeValid:has-success :form-group :cc-expiration"}}>
+  <div class="{{if zipcodeValid 'has-success'}} form-group cc-expiration">
     <label class="control-label">Zip Code</label>
     {{input-credit-card-zipcode zipcode=zipcode class="form-control"}}
   </div>

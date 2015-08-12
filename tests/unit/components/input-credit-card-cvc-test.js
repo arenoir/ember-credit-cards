@@ -6,6 +6,12 @@ import {
 moduleForComponent('input-credit-card-cvc', {
   // specify the other units that are required for this test
   // needs: ['component:foo', 'helper:bar']
+  //
+  // the component: test module is implicitly running in unit test mode,
+  // which will change to integration test mode by default in an upcoming
+  // version of ember-test-helpers.
+  // Add `unit: true` or a `needs:[]` list to explicitly opt in to unit test mode.
+  unit: true
 });
 
 test('it renders', function(assert) {

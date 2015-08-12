@@ -4,7 +4,13 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForComponent('input-credit-card-zipcode', {});
+moduleForComponent('input-credit-card-zipcode', {
+  // the component: test module is implicitly running in unit test mode,
+  // which will change to integration test mode by default in an upcoming
+  // version of ember-test-helpers.
+  // Add `unit: true` or a `needs:[]` list to explicitly opt in to unit test mode.
+  unit: true
+});
 
 test('it renders', function(assert) {
   assert.expect(2);
@@ -18,7 +24,7 @@ test('it renders', function(assert) {
 
 
 test('should accept 9 digits ', function(assert) {
-  var component = this.subject();  
+  var component = this.subject();
   this.render();
 
   Ember.run(function() {
@@ -28,7 +34,7 @@ test('should accept 9 digits ', function(assert) {
   // Ember.run(function() {
   //   component.$().trigger({type: 'keypress', which: 52, keyCode: 52});
   // });
-    
+
   Ember.run(function() {
     var value = component.get('value');
     assert.equal(value, '94606-2370');
