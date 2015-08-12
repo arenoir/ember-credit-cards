@@ -34,9 +34,9 @@ export default TextField.extend({
       return this.get('cvc');
     },
     set(propertyName, newValue) {
-      let number = newValue.replace(/\D/g, '').slice(0, 4);
+      var number = newValue.replace(/\D/g, '').slice(0, 4);
       this.set('cvc', newValue);
-      
+
       return number;
     }
   })
