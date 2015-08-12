@@ -1,6 +1,6 @@
 {
   "name": "ember-credit-cards",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A credit card utility library and form elements.",
   "directories": {
     "doc": "doc",
