@@ -11,6 +11,7 @@ ratings:
   - "app/**"
   - "addon/**"
 exclude_paths:
+- "test/*"
 - "*.md"
 - "blueprints/**/*"
 - "config/**/*"
