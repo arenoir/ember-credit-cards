@@ -1,0 +1,21 @@
+---
+engines:
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+  watson:
+    enabled: true
+ratings:
+  paths:
+  - "app/**"
+  - "addon/**"
+exclude_paths:
+- "*.md"
+- "blueprints/**/*"
+- "config/**/*"
+- "dist/**/*"
+- "vendor/**/*"
+- "node_modules/**/*"
+- "bower_components/**/*"
+- "tmp/**/*"
