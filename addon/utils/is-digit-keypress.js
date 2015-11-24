@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import isWhitelistKeypress from 'ember-credit-cards/utils/is-whitelist-keypress';
 
 export default function isDigitKeypress(e) {
