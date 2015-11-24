@@ -1,12 +1,11 @@
 import Ember from 'ember';
-
-const validKeyCodes = Ember.A([9, 8, 46, 27, 13]);
+import isWhitelistKeypress from 'ember-credit-cards/utils/is-whitelist-keypress';
 
 export default function isDigitKeypress(e) {
   var keyCode = e.keyCode || e.which;
   var digit = String.fromCharCode(keyCode);
 
-  if (/^\d+$/.test(digit) || validKeyCodes.contains(keyCode)) {
+  if (/^\d+$/.test(digit) || isWhitelistKeypress(e)) {
     return true;
   }
 

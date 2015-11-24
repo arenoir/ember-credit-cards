@@ -2,6 +2,7 @@ import computed from 'ember-new-computed';
 import Ember from 'ember';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
+import isWhitelistKeypress from 'ember-credit-cards/utils/is-whitelist-keypress';
 
 const {TextField} = Ember;
 
@@ -25,7 +26,7 @@ export default TextField.extend({
 
     var value = el.val() + digit;
 
-    return value.length <= 4;
+    return isWhitelistKeypress(e) || value.length <= 4;
   },
 
 
