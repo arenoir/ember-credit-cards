@@ -1,5 +1,8 @@
 # Ember Credit Cards Changelog
 
+### 0.0.6 (November 24, 2015)
+- Issue[#6](https://github.com/arenoir/ember-credit-cards/issues/6) [BUGFIX] CVC field in Firefox can't backspace after 4 digits entered.
+
 ### 0.0.5 (August 12, 2015)
 - [#4](https://github.com/arenoir/ember-credit-cards/pull/4) Use new-computed polyfill to support computeds in Ember v2.0.0-beta.2+
 - [#5](https://github.com/arenoir/ember-credit-cards/pull/5) [BREAKING] Remove bind-attr, Update to ember cli@1.13.8 (Requires Ember >= 1.10.0)
