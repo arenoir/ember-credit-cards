@@ -1,5 +1,8 @@
 # Ember Credit Cards Changelog
 
+### 1.0.0 (April 15th, 2016)
+- Remove support for Ember < 1.13.
+
 ### 0.0.6 (November 24, 2015)
 - [#6](https://github.com/arenoir/ember-credit-cards/issues/6) [BUGFIX] CVC field in Firefox can't backspace after 4 digits entered.
 
