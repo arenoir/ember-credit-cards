@@ -1,9 +1,8 @@
-import computed from 'ember-new-computed';
 import Ember from 'ember';
 import Validations from 'ember-credit-cards/utils/validations';
 import Cards from 'ember-credit-cards/utils/cards';
 
-const {Component, observer} = Ember;
+const {Component, observer, computed} = Ember;
 
 export default Component.extend({
   tagName: 'form',
