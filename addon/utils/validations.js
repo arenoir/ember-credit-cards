@@ -19,7 +19,7 @@ function validateNumber(num) {
   if (card) {
     var cardNumbers = new A(card.length);
 
-    return ( cardNumbers.contains(num.length)) && (card.luhn === false || luhnCheck(num));
+    return ( cardNumbers.includes(num.length)) && (card.luhn === false || luhnCheck(num));
   }
   
   return false;  
@@ -79,7 +79,7 @@ function validateCVC(cvc, type) {
   if (card) {
     var cvcNumbers = new A(card.cvcLength);
     
-    return cvcNumbers.contains(cvc.length);
+    return cvcNumbers.includes(cvc.length);
   } else {
     return cvc.length >= 3 && cvc.length <= 4;
   }
