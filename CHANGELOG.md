@@ -1,4 +1,6 @@
 # Ember Credit Cards Changelog
+### 1.1.1 (March 1st, 2017)
+- Update ember cli and dependencies.
 
 ### 1.1.0 (November 4th, 2016)
 - [#9](https://github.com/arenoir/ember-credit-cards/issues/9) [BUGFIX] DEPRECATION error on ember 2.8.1

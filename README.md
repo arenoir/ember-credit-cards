@@ -1,17 +1,17 @@
-# Ember-credit-cards 
+# Ember-credit-cards
 
 [![Build Status](https://travis-ci.org/arenoir/ember-credit-cards.svg)](https://travis-ci.org/arenoir/ember-credit-cards)
 
 A credit card utility library and form elements. Influenced by the [jquery.payment](https://github.com/stripe/jquery.payment) lib.
 
-Checkout the [demo](http://arenoir.github.io/ember-credit-cards/).
+Checkout the [demo](https://arenoir.github.io/ember-credit-cards/).
 
 ## Components
 
 ### credit-card-form
 Full credit card form with validations and formatting.
 
-Attributes: 
+Attributes:
   * number
   * name
   * month
@@ -30,12 +30,12 @@ Example:
 //templates/credit-cards/new.hbs
 
   <div>
-    {{ credit-card-form 
-       number=attrs.number 
-       name=attrs.name 
-       month=attrs.month 
-       year=attrs.year 
-       cvc=attrs.cvc 
+    {{ credit-card-form
+       number=attrs.number
+       name=attrs.name
+       month=attrs.month
+       year=attrs.year
+       cvc=attrs.cvc
        on-validate="validate"
     }}
   </div>
@@ -63,21 +63,21 @@ export default Ember.Route.extend({
 
 
 ### input-credit-card-number
-Formats credit card number on entry. Discards non-numeric and extra characters. Parses sets number attribute. 
+Formats credit card number on entry. Discards non-numeric and extra characters. Parses sets number attribute.
 
 Attributes:
   * number
 
 ### input-credit-card-cvc
 
-Formats cvc number on entry. Discards non-numeric and extra characters. Parses sets cvc attribute. 
+Formats cvc number on entry. Discards non-numeric and extra characters. Parses sets cvc attribute.
 
 Attributes:
   * cvc
 
 ### input-credit-card-expiration
 
-Validates and formats expiration date. Discards non-numeric and extra characters. Parses and sets month, year attributes. 
+Validates and formats expiration date. Discards non-numeric and extra characters. Parses and sets month, year attributes.
 
 Attributes:
   * month
@@ -86,7 +86,7 @@ Attributes:
 
 ### input-credit-card-zipcode
 
-Validates and formats zip code. Discards non-numeric and extra characters. Sets zipcode attribute. 
+Validates and formats zip code. Discards non-numeric and extra characters. Sets zipcode attribute.
 
 Attributes:
   * zipcode
@@ -164,4 +164,3 @@ validations.validateZipcode('946112544'); //=> true
 validations.validateZipcode('94611-24'); //=> false
 
 ```
-
