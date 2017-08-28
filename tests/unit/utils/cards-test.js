@@ -37,6 +37,7 @@ test('should return correct card for all test numbers', function(assert) {
 
   assert.equal(cards.cardType('5555555555554444'), 'mastercard');
   assert.equal(cards.cardType('5454545454545454'), 'mastercard');
+  assert.equal(cards.cardType('2221000000000000'), 'mastercard');
 
   assert.equal(cards.cardType('378282246310005'), 'amex');
   assert.equal(cards.cardType('371449635398431'), 'amex');
