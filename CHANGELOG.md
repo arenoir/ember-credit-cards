@@ -1,4 +1,9 @@
 # Ember Credit Cards Changelog
+
+### 1.1.2 (October 17th, 2017)
+- Update ember cli and dependencies.
+- [#13]https://github.com/arenoir/ember-credit-cards/pull/13 [FEATURE] custom labels.
+
 ### 1.1.1 (March 1st, 2017)
 - Update ember cli and dependencies.
 
