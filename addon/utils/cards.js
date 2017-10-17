@@ -38,7 +38,7 @@ var cards = [
     luhn: true
   },{
     type: 'mastercard',
-    pattern: /^5[0-5]/,
+    pattern: /^5[1-5]\d{14}$|^2(?:2(?:2[1-9]|[3-9]\d)|[3-6]\d\d|7(?:[01]\d|20))\d{12}$/,
     format: defaultFormat,
     length: [16],
     cvcLength: [3],

@@ -164,3 +164,31 @@ validations.validateZipcode('946112544'); //=> true
 validations.validateZipcode('94611-24'); //=> false
 
 ```
+
+# I18n
+
+## Custom Labels
+
+
+You can provide custom labels for localization.
+
+``` html
+
+  <div>
+    {{
+      credit-card-form
+      number=ccNumber
+      name=ccName
+      month=ccMonth
+      year=ccYear
+      cvc=ccCvc
+      numberLabel=(t 'credit-card-form.number')
+      securityCodeLabel=(t 'credit-card-form.security-code')
+      nameOnCardLabel=(t 'credit-card-form.name-on-card')
+      expirationLabel=(t 'credit-card-form.expiration')
+      zipCodeLabel=(t 'credit-card-form.zip-code')
+      on-validate='ccValidate'
+    }}
+  </div>
+
+```
