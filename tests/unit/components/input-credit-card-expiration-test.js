@@ -46,7 +46,7 @@ test('should format forward slash shorthand correctly', function(assert) {
   });
 
 
-  var e = $.Event('keypress');
+  var e = Ember.$.Event('keypress');
       e.which = 47; // '/'
 
   Ember.run(function() {
@@ -69,7 +69,7 @@ test('should only allow numbers', function(assert) {
   });
 
 
-  var e = $.Event('keypress');
+  var e = Ember.$.Event('keypress');
       e.which = 100; // 'd'
 
   component.$().trigger(e);
@@ -89,7 +89,7 @@ test('should only allow six numbers', function(assert) {
   });
 
 
-  var e = $.Event('keypress');
+  var e = Ember.$.Event('keypress');
       e.which = 52; // 'd'
 
   component.$().trigger(e);

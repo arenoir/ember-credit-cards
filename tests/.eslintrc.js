@@ -1,6 +1,5 @@
 module.exports = {
   env: {
-    embertest: true,
-    jquery: true
+    embertest: true
   }
 };

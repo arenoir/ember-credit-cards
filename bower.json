@@ -1,4 +1,9 @@
 {
   "name": "ember-credit-cards",
-  "dependencies": {}
+  "dependencies": {
+    "ember": "components/ember#release"
+  },
+  "resolutions": {
+    "ember": "release"
+  }
 }
