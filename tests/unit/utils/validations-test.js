@@ -20,7 +20,7 @@ test('Validating a card number', function(assert) {
 
 test('validateCVC without card type', function(assert) {
   var validate = validations.validateCVC;
-  
+
   assert.equal( validate(''), false, 'should fail if empty');
   assert.equal( validate('123'), true, 'should pass if valid');
   assert.equal( validate('12e'), false, 'should fail with non-digits');
@@ -31,9 +31,9 @@ test('validateCVC without card type', function(assert) {
 
 test('validateCVC with card type', function(assert) {
   var validate = validations.validateCVC;
-  
-  assert.equal( validate('123', 'amex'), true, 'should pass if amex with 3 digits');
-  assert.equal( validate('123', 'visa'), true, 'should validate a three digit number with card type other than amex');
+
+  assert.equal( validate('123', 'amex'), false, 'should not validate a three digit number with card type amex');
+  assert.equal( validate('123', 'visa'), true, 'should validate a three digit number with a card type other than amex');
   assert.equal( validate('1234', 'visa'), false, 'should not validate a four digit number with a card type other than amex');
   assert.equal( validate('1234', 'amex'), true, 'should validate a four digit number with card type amex');
 });
