@@ -48,7 +48,7 @@ var cards = [
     pattern: /^3[47]/,
     format: /(\d{1,4})(\d{1,6})?(\d{1,5})?/,
     length: [15],
-    cvcLength: [3,4],
+    cvcLength: [4],
     luhn: true
   },{
     type: 'dinersclub',
