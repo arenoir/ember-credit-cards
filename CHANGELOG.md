@@ -1,8 +1,11 @@
 # Ember Credit Cards Changelog
 
+### 1.1.3 (November 2nd, 2017)
+- [#14](https://github.com/arenoir/ember-credit-cards/pull/19) only allow 4 digit cvv code for amex.
+
 ### 1.1.2 (October 17th, 2017)
 - Update ember cli and dependencies.
-- [#13]https://github.com/arenoir/ember-credit-cards/pull/13 [FEATURE] custom labels.
+- [#13](https://github.com/arenoir/ember-credit-cards/pull/13) [FEATURE] custom labels.
 
 ### 1.1.1 (March 1st, 2017)
 - Update ember cli and dependencies.
