@@ -21,7 +21,7 @@ Attributes:
   * zipcodeRequired
 
 Events:
-  * oValidate
+  * onValidate
 
 
 Example:
