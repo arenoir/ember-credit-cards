@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Ember-credit-cards
 
 [![Build Status](https://travis-ci.org/arenoir/ember-credit-cards.svg)](https://travis-ci.org/arenoir/ember-credit-cards)
@@ -37,11 +36,11 @@ Example:
        month=attrs.month
        year=attrs.year
        cvc=attrs.cvc
-       on-validate="validate"
+       onValidate=(mut disabled)
     }}
   </div>
 
-  <button {{action "save"}} {{bind-attr disabled="disabled"}}>
+  <button {{action "save"}} disabled={{disabled}}>
     Save
   </button>
 
@@ -244,4 +243,3 @@ License
 ------------------------------------------------------------------------------
 
 This project is licensed under the [MIT License](LICENSE.md).
->>>>>>> cfffad8... message
