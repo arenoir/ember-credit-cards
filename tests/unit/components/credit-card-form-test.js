@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import {
   moduleForComponent,
   test
@@ -33,7 +33,7 @@ test('it should format Card Number label correctly with default value when no nu
 
   var component = this.subject();
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-number .control-label').text().trim(), 'Card Number', 'label says Card Number');
   });
 });
@@ -43,7 +43,7 @@ test('it should format Security Code label correctly with default value when no 
 
   var component = this.subject();
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-cvc .control-label').text().trim(), 'Security Code', 'label says Security Code');
   });
 });
@@ -53,7 +53,7 @@ test('it should format Name on Card label correctly with default value when no n
 
   var component = this.subject();
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-name .control-label').text().trim(), 'Name on Card', 'label says Name on Card');
   });
 });
@@ -63,7 +63,7 @@ test('it should format Expiration label correctly with default value when no exp
 
   var component = this.subject();
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-expiration .control-label').first().text().trim(), 'Expiration', 'label says Expiration');
   });
 });
@@ -73,11 +73,11 @@ test('it should format Zip Code label correctly with default value when no zipCo
 
   var component = this.subject();
 
-  Ember.run(function() {
+  run(function() {
     component.set('zipcodeRequired', true);
   });
 
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-expiration .control-label').last().text().trim(), 'Zip Code', 'label says Zip Code');
   });
 });
@@ -89,11 +89,11 @@ test('it should format Card Number label correctly with custom numberLabel provi
 
   var component = this.subject();
 
-  Ember.run(function() {
+  run(function() {
     component.set('numberLabel', 'Kaartnummer');
   });
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-number .control-label').text().trim(), 'Kaartnummer', 'label says Kaartnummer');
   });
 });
@@ -103,11 +103,11 @@ test('it should format Security Code label correctly with custom securityCodeLab
 
   var component = this.subject();
 
-  Ember.run(function() {
+  run(function() {
     component.set('securityCodeLabel', 'Veiligheidscode');
   });
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-cvc .control-label').text().trim(), 'Veiligheidscode', 'label says Veiligheidscode');
   });
 });
@@ -117,11 +117,11 @@ test('it should format Name on Card label correctly with custom nameOnCardLabel 
 
   var component = this.subject();
 
-  Ember.run(function() {
+  run(function() {
     component.set('nameOnCardLabel', 'Naam op Kaart');
   });
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-name .control-label').text().trim(), 'Naam op Kaart', 'label says Naam op Kaart');
   });
 });
@@ -131,11 +131,11 @@ test('it should format Expiration label correctly with custom expirationLabel pr
 
   var component = this.subject();
 
-  Ember.run(function() {
+  run(function() {
     component.set('expirationLabel', 'Vervalt op');
   });
   
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-expiration .control-label').first().text().trim(), 'Vervalt op', 'label says Vervalt op');
   });
 });
@@ -145,12 +145,12 @@ test('it should format Zip Code label correctly with custom zipCodeLabel provide
 
   var component = this.subject();
 
-  Ember.run(function() {
+  run(function() {
     component.set('zipCodeLabel', 'Postcode');
     component.set('zipcodeRequired', true);
   });
 
-  Ember.run(function() {
+  run(function() {
     assert.equal(component.$('.cc-expiration .control-label').last().text().trim(), 'Postcode', 'label says Postcode');
   });
 });

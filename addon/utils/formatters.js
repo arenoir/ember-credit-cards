@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import { isEmpty } from '@ember/utils';
 import cards from 'ember-credit-cards/utils/cards';
 
-var isEmpty = Ember.isEmpty;
 var cardFromNumber = cards.fromNumber;
 
 function formatNumber(num) {

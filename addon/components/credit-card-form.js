@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import { and } from '@ember/object/computed';
+import Component from '@ember/component';
+import { computed, observer } from '@ember/object';
 import Validations from 'ember-credit-cards/utils/validations';
 import Cards from 'ember-credit-cards/utils/cards';
-
-const {Component, observer, computed} = Ember;
 
 export default Component.extend({
   tagName: 'form',
@@ -15,11 +15,12 @@ export default Component.extend({
   cvc: null,
   zipcode: null,
   zipcodeRequired: false,
+  onValidate(){}, 
 
-  isValid: computed.and('nameValid', 'numberValid', 'expirationValid', 'cvcValid', 'zipcodeValid'),
+  isValid: and('nameValid', 'numberValid', 'expirationValid', 'cvcValid', 'zipcodeValid'),
 
   becameValid: observer('isValid', function() {
-    this.sendAction('on-validate', this.get('isValid'));
+    this.get('onValidate')(this.get('isValid'));
   }),
 
   nameValid: computed('name', function() {
@@ -58,7 +59,7 @@ export default Component.extend({
 
       return Validations.validateZipcode(zip);
     }
-    
+
     return true;
   }),
 

@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import TextField from '@ember/component/text-field';
+import { computed } from '@ember/object';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import formatters from 'ember-credit-cards/utils/formatters';
 import cards from 'ember-credit-cards/utils/cards';
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
 const cardFromNumber = cards.fromNumber;
-const {TextField, computed} = Ember;
 
 function inputValid(value) {
   value = (value + '').replace(/\D/g, '');

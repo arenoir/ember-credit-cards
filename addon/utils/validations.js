@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import { A } from '@ember/array';
 import cards from 'ember-credit-cards/utils/cards';
-
-const {A} = Ember;
 
 var cardFromNumber = cards.fromNumber;
 var cardFromType = cards.fromType;

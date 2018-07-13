@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import {
   moduleForComponent,
   test
@@ -35,7 +35,7 @@ test('it should format cc number correctly', function(assert) {
 
   // component.$().trigger(e);
 
-  Ember.run(function() {
+  run(function() {
     assert.equal( component.get('value'), '4242 4');
   });
 });
@@ -53,7 +53,7 @@ test('should format amex cc number correctly', function(assert) {
 
   // component.$().trigger(e);
 
-  Ember.run(function() {
+  run(function() {
     assert.equal( component.get('value'), '3782 8');
   });
 });

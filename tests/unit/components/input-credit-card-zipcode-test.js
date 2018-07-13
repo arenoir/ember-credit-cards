@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
 import {
   moduleForComponent,
   test
@@ -27,7 +27,7 @@ test('should accept 9 digits ', function(assert) {
   var component = this.subject();
   this.render();
 
-  Ember.run(function() {
+  run(function() {
     component.set('zipcode', '946062370');
   });
 
@@ -35,7 +35,7 @@ test('should accept 9 digits ', function(assert) {
   //   component.$().trigger({type: 'keypress', which: 52, keyCode: 52});
   // });
 
-  Ember.run(function() {
+  run(function() {
     var value = component.get('value');
     assert.equal(value, '94606-2370');
   });
