@@ -21,7 +21,7 @@ Attributes:
   * zipcodeRequired
 
 Events:
-  * on-validate
+  * oValidate
 
 
 Example:
@@ -46,20 +46,6 @@ Example:
 
 ```
 
-
-``` javascript
-//routes/credit-cards/new.js
-
-import Ember from 'ember';
-
-export default Ember.Route.extend({
-  actions: {
-    validate: function(bool) {
-      this.controller.set('disabled', !bool);
-    }
-  }
-});
-```
 
 
 ### input-credit-card-number
