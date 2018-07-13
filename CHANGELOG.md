@@ -1,5 +1,8 @@
 # Ember Credit Cards Changelog
 
+### 1.2.0 (July 13th, 2018)
+- Update ember cli. Change `on-validate` action to closure property `onValidate`.
+
 ### 1.1.3 (November 2nd, 2017)
 - [#14](https://github.com/arenoir/ember-credit-cards/pull/19) only allow 4 digit cvv code for amex.
 
