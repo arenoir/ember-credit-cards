@@ -15,17 +15,17 @@ function validateNumber(num) {
   var card = cardFromNumber(num);
 
   if (card) {
-    var cardNumbers = new A(card.length);
+    var cardNumbers = A(card.length);
 
     return ( cardNumbers.includes(num.length)) && (card.luhn === false || luhnCheck(num));
   }
-  
-  return false;  
+
+  return false;
 }
 
 
 function validateExpiration(month, year) {
-  
+
   if (typeof month === 'string') {
     month = parseInt(month);
   }
@@ -37,7 +37,7 @@ function validateExpiration(month, year) {
   if (typeof month !== 'number') {
     return false;
   }
-  
+
   if (typeof year !== 'number') {
     return false;
   }
@@ -51,7 +51,7 @@ function validateExpiration(month, year) {
   }
 
   var edate = new Date(year, month);
-  var today = new Date(); 
+  var today = new Date();
 
   //Months start from 0 in JavaScript
   edate.setMonth(edate.getMonth() - 1);
@@ -75,8 +75,8 @@ function validateCVC(cvc, type) {
   var card = cardFromType(type);
 
   if (card) {
-    var cvcNumbers = new A(card.cvcLength);
-    
+    var cvcNumbers = A(card.cvcLength);
+
     return cvcNumbers.includes(cvc.length);
   } else {
     return cvc.length >= 3 && cvc.length <= 4;
