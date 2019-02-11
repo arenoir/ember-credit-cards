@@ -1,6 +1,6 @@
-export default function hasTextSelected(target) {
+export default function hasTextSelected(input) {
   var ref;
-  if ((target.prop('selectionStart') != null) && target.prop('selectionStart') !== target.prop('selectionEnd')) {
+  if ((input.getAttribute('selectionStart') != null) && input.getAttribute('selectionStart') !== input.getAttribute('selectionEnd')) {
     return true;
   }
   if ((typeof document !== "undefined" && document !== null ? (ref = document.selection) != null ? ref.createRange : void 0 : void 0) != null) {

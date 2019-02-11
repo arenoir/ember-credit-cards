@@ -51,13 +51,11 @@ export default TextField.extend({
       return false;
     }
 
-    var el = this.$();
-
-    if (hasTextSelected(el)) {
+    if (hasTextSelected(this.element)) {
       return true;
     }
 
-    var value = el.val() + digit;
+    var value = this.element.value + digit;
     return inputValid(value);
   },
 

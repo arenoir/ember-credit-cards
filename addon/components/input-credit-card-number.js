@@ -31,13 +31,12 @@ export default TextField.extend({
       return false;
     }
 
-    var digit = String.fromCharCode(e.which);
-    var el = this.$();
-    if (hasTextSelected(el)) {
+    if (hasTextSelected(this.element)) {
       return true;
     }
 
-    var value = el.val() + digit;
+    var digit = String.fromCharCode(e.which);
+    var value = this.element.value + digit;
     return inputValid(value);
   },
 
