@@ -4,6 +4,7 @@
   "description": "A credit card utility library and form elements.",
   "scripts": {
     "build": "ember build",
+    "lint:hbs": "ember-template-lint .",
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "ember test",
