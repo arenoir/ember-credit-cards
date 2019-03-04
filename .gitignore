@@ -13,7 +13,10 @@
 =======
 /.env*
 /.pnp*
+<<<<<<< HEAD
 >>>>>>> ef18552... message
+=======
+>>>>>>> 1e3ad34... message
 /.sass-cache
 /connect.lock
 /coverage/
