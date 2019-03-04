@@ -159,7 +159,6 @@ validations.validateZipcode('94611-24'); //=> false
 You can provide custom labels for localization.
 
 ``` html
-
   <div>
     {{
       credit-card-form
@@ -176,3 +175,4 @@ You can provide custom labels for localization.
       on-validate='ccValidate'
     }}
   </div>
+```

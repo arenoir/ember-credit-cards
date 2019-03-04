@@ -9,6 +9,11 @@
 /node_modules/
 
 # misc
+<<<<<<< HEAD
+=======
+/.env*
+/.pnp*
+>>>>>>> ef18552... message
 /.sass-cache
 /connect.lock
 /coverage/
