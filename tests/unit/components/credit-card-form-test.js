@@ -1,29 +1,16 @@
 import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
-import { setupTest } from 'ember-qunit';
+import { setupTest, setupRenderingTest } from 'ember-qunit';
 
 module('credit-card-form', function(hooks) {
   setupTest(hooks);
-
-  test('it renders', function(assert) {
-    assert.expect(2);
-
-    // creates the component instance
-    var component = this.owner.factoryFor('component:credit-card-form').create();
-    assert.equal(component._state, 'preRender');
-
-    // renders the component to the page
-    this.render();
-    assert.equal(component._state, 'inDOM');
-  });
-
-  // tests for standard label
+  setupRenderingTest(hooks);
 
   test('it should format Card Number label correctly with default value when no numberLabel provided', function(assert) {
     this.render();
 
     var component = this.owner.factoryFor('component:credit-card-form').create();
-    
+
     run(function() {
       assert.equal(component.$('.cc-number .control-label').text().trim(), 'Card Number', 'label says Card Number');
     });
@@ -33,7 +20,7 @@ module('credit-card-form', function(hooks) {
     this.render();
 
     var component = this.owner.factoryFor('component:credit-card-form').create();
-    
+
     run(function() {
       assert.equal(component.$('.cc-cvc .control-label').text().trim(), 'Security Code', 'label says Security Code');
     });
@@ -43,7 +30,7 @@ module('credit-card-form', function(hooks) {
     this.render();
 
     var component = this.owner.factoryFor('component:credit-card-form').create();
-    
+
     run(function() {
       assert.equal(component.$('.cc-name .control-label').text().trim(), 'Name on Card', 'label says Name on Card');
     });
@@ -53,7 +40,7 @@ module('credit-card-form', function(hooks) {
     this.render();
 
     var component = this.owner.factoryFor('component:credit-card-form').create();
-    
+
     run(function() {
       assert.equal(component.$('.cc-expiration .control-label').first().text().trim(), 'Expiration', 'label says Expiration');
     });
@@ -83,7 +70,7 @@ module('credit-card-form', function(hooks) {
     run(function() {
       component.set('numberLabel', 'Kaartnummer');
     });
-    
+
     run(function() {
       assert.equal(component.$('.cc-number .control-label').text().trim(), 'Kaartnummer', 'label says Kaartnummer');
     });
@@ -97,7 +84,7 @@ module('credit-card-form', function(hooks) {
     run(function() {
       component.set('securityCodeLabel', 'Veiligheidscode');
     });
-    
+
     run(function() {
       assert.equal(component.$('.cc-cvc .control-label').text().trim(), 'Veiligheidscode', 'label says Veiligheidscode');
     });
@@ -111,7 +98,7 @@ module('credit-card-form', function(hooks) {
     run(function() {
       component.set('nameOnCardLabel', 'Naam op Kaart');
     });
-    
+
     run(function() {
       assert.equal(component.$('.cc-name .control-label').text().trim(), 'Naam op Kaart', 'label says Naam op Kaart');
     });
@@ -125,7 +112,7 @@ module('credit-card-form', function(hooks) {
     run(function() {
       component.set('expirationLabel', 'Vervalt op');
     });
-    
+
     run(function() {
       assert.equal(component.$('.cc-expiration .control-label').first().text().trim(), 'Vervalt op', 'label says Vervalt op');
     });
