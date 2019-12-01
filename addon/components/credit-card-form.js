@@ -15,7 +15,7 @@ export default Component.extend({
   cvc: null,
   zipcode: null,
   zipcodeRequired: false,
-  onValidate(){}, 
+  onValidate(){},
 
   isValid: and('nameValid', 'numberValid', 'expirationValid', 'cvcValid', 'zipcodeValid'),
 
@@ -69,6 +69,8 @@ export default Component.extend({
 
     if (card) {
       return card.type;
+    } else {
+      return '';
     }
   })
 });
