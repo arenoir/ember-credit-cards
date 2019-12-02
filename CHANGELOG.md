@@ -1,5 +1,8 @@
 # Ember Credit Cards Changelog
 
+### 1.4.0 (December 2nd, 2019)
+- Update ember cli, remove jquery dependencies. Drop support for ember < 3.8.
+
 ### 1.3.1 (March 4th, 2019)
 - Update ember cli and ember-source.
 
