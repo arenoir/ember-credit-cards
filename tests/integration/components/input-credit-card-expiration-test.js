@@ -53,16 +53,26 @@ module('input-credit-card-expiration', function(hooks) {
 
 
   test('should only allow numbers', async function(assert) {
-    assert.expect(1);
-    this.set('month', 4);
-    await render(hbs`{{input-credit-card-expiration month=month}}`);
-    await typeIn('input', 'd');
-
-
+    assert.expect(3);
+    this.set('month', '');
+    this.set('year', '');
+    await render(hbs`{{input-credit-card-expiration month=month year=year}}`);
+    await typeIn('input', '4');
     assert.equal(
       this.element.querySelector('input').value,
       '04 / '
     );
+    await typeIn('input', 'd');
+
+    assert.equal(
+      this.get('month'),
+      "04"
+    )
+    assert.equal(
+      this.get('year'),
+      ""
+    )
+
   });
 
   test('should only allow six numbers', async function(assert) {
@@ -70,7 +80,6 @@ module('input-credit-card-expiration', function(hooks) {
     this.set('month', "4");
     this.set('year', "2019");
     await render(hbs`{{input-credit-card-expiration month=month year=year}}`);
-    await typeIn('input', 'd');
 
     assert.equal(
       this.element.querySelector('input').value,

@@ -21,17 +21,4 @@ module('input-credit-card-number', function(hooks) {
       '4242 45'
     );
   });
-
-
-  test('should format amex cc number correctly', async function(assert) {
-    assert.expect(1);
-    this.set('number', '42424');
-    await render(hbs`{{input-credit-card-number number=number}}`);
-    await typeIn('input', 'd');
-
-    assert.equal(
-      this.element.querySelector('input').value,
-      '4242 4'
-    );
-  });
 });
