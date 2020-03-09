@@ -1,5 +1,9 @@
 # Ember Credit Cards Changelog
 
+### 1.5.0 (March 9th, 2020)
+- Update ember cli.  Update templates to use bracket notation. Drop support for ember < 3.12
+
+
 ### 1.4.0 (December 2nd, 2019)
 - Update ember cli, remove jquery dependencies. Drop support for ember < 3.8.
 

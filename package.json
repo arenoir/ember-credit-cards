@@ -1,6 +1,6 @@
 {
   "name": "ember-credit-cards",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A credit card utility library and form elements.",
   "scripts": {
     "build": "ember build --environment=production",
