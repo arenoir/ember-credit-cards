@@ -6,13 +6,10 @@ A credit card utility library and form elements. Influenced by the [jquery.payme
 
 Checkout the [demo](https://arenoir.github.io/ember-credit-cards/).
 
-
 ## Components
-=======
 * Ember.js v3.4 or above
 * Ember CLI v2.13 or above
 * Node.js v8 or above
-
 
 ### credit-card-form
 Full credit card form with validations and formatting.
