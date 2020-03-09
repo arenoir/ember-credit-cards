@@ -21,10 +21,10 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="cc-container">
-        {{credit-card-form zipcodeRequired=zipcodeRequired}}
+        <CreditCardForm @zipcodeRequired={{this.zipcodeRequired}} />
         <div class="checkbox">
           <label>
-            {{input type="checkbox" checked=zipcodeRequired}} require zip code.
+            <Input @type="checkbox" @checked={{this.zipcodeRequired}} /> require zip code.
           </label>
         </div>
 

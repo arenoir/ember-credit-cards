@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-/bower_components
-=======
-# compiled output
-/dist/
-/tmp/
-
-# dependencies
-/bower_components/
-
-# misc
-/.bowerrc
-/.editorconfig
-/.ember-cli.js
-/.env*
-/.eslintignore
-/.eslintrc.js
-/.git/
-/.gitignore
-/.template-lintrc.js
-/.travis.yml
-/.watchmanconfig
-/bower.json
->>>>>>> 1e7b004... message
 /config/ember-try.js
 /dist
 /tests
