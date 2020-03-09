@@ -1,6 +1,7 @@
 # Ember-credit-cards
 
 [![Build Status](https://travis-ci.org/arenoir/ember-credit-cards.svg)](https://travis-ci.org/arenoir/ember-credit-cards)
+[![npm version](https://badge.fury.io/js/ember-credit-cards.svg)](https://badge.fury.io/js/ember-credit-cards)
 
 A credit card utility library and form elements. Influenced by the [jquery.payment](https://github.com/stripe/jquery.payment) lib.
 
