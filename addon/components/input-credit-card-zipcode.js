@@ -25,7 +25,7 @@ export default TextField.extend({
 
   value: computed('zipcode', {
     get() {
-      return formatters.formatZipcode(this.get('zipcode'));
+      return formatters.formatZipcode(this.zipcode);
     },
     set(key, value) {
       this.set('zipcode', value);

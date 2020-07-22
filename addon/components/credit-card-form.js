@@ -20,11 +20,11 @@ export default Component.extend({
   isValid: and('nameValid', 'numberValid', 'expirationValid', 'cvcValid', 'zipcodeValid'),
 
   becameValid: observer('isValid', function() {
-    this.get('onValidate')(this.get('isValid'));
+    this.onValidate(this.isValid);
   }),
 
   nameValid: computed('name', function() {
-    var name = this.get('name');
+    var name = this.name;
 
     if (name) {
       return true;
@@ -34,28 +34,28 @@ export default Component.extend({
   }),
 
   numberValid: computed('number', function() {
-    var number = this.get('number');
+    var number = this.number;
 
     return Validations.validateNumber(number);
   }),
 
   expirationValid: computed('month', 'year', function() {
-    var month = this.get('month');
-    var year  = this.get('year');
+    var month = this.month;
+    var year  = this.year;
 
     return Validations.validateExpiration(month, year);
   }),
 
   cvcValid: computed('cvc', 'type', function() {
-    var cvc = this.get('cvc');
-    var type = this.get('type');
+    var cvc = this.cvc;
+    var type = this.type;
 
     return Validations.validateCVC(cvc, type);
   }),
 
   zipcodeValid: computed('zipcodeRequired', 'zipcode', function() {
-    if (this.get('zipcodeRequired')) {
-      var zip = this.get('zipcode');
+    if (this.zipcodeRequired) {
+      var zip = this.zipcode;
 
       return Validations.validateZipcode(zip);
     }
@@ -64,7 +64,7 @@ export default Component.extend({
   }),
 
   type: computed('number', function() {
-    var number = this.get('number');
+    var number = this.number;
     var card = Cards.fromNumber(number);
 
     if (card) {

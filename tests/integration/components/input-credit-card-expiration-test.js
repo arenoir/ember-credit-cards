@@ -65,11 +65,11 @@ module('input-credit-card-expiration', function(hooks) {
     await typeIn('input', 'd');
 
     assert.equal(
-      this.get('month'),
+      this.month,
       "04"
     )
     assert.equal(
-      this.get('year'),
+      this.year,
       ""
     )
 

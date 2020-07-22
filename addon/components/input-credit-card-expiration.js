@@ -61,7 +61,7 @@ export default TextField.extend({
 
   value: computed('month', 'year', {
     get() {
-      return formatters.formatExpiration(this.get('month'), this.get('year'));
+      return formatters.formatExpiration(this.month, this.year);
     },
     set(key, value) {
       var parsed = parseInput(value);

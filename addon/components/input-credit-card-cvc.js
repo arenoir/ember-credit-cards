@@ -29,7 +29,7 @@ export default TextField.extend({
 
   value: computed('cvc', {
     get() {
-      return this.get('cvc');
+      return this.cvc;
     },
     set(propertyName, newValue) {
       var number = newValue.replace(/\D/g, '').slice(0, 4);

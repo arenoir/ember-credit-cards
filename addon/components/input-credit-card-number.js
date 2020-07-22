@@ -43,7 +43,7 @@ export default TextField.extend({
 
   value: computed('number', {
     get() {
-      return formatters.formatNumber(this.get('number'));
+      return formatters.formatNumber(this.number);
     },
     set(key, value) {
       this.set('number', value);
