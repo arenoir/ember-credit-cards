@@ -7,6 +7,8 @@ import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 export default TextField.extend({
   type: 'tel',
   classNames: ['input-credit-card-zipcode'],
+  autocomplete: 'none',
+  autocorrect: 'off',
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);

@@ -6,9 +6,10 @@ import isWhitelistKeypress from 'ember-credit-cards/utils/is-whitelist-keypress'
 
 export default TextField.extend({
   classNames: ['input-credit-card-cvc'],
-  autocomplete: 'off',
+  autocomplete: 'cc-csc',
   placeholder: '•••',
   label: 'Expiration',
+  type: 'tel',
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
