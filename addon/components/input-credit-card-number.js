@@ -25,6 +25,7 @@ export default TextField.extend({
   placeholder: '•••• •••• •••• ••••',
   autocomplete: 'cc-number',
   type: 'tel',
+  required: true,
 
   keyPress: function(e) {
     if (!isDigitKeypress(e)) {

@@ -43,6 +43,8 @@ export default TextField.extend({
   year: null,
   placeholder: '•• / ••',
   autocomplete: 'cc-exp',
+  type: 'tel',
+  required: true,
 
   keyPress: function(e) {
     var digit = String.fromCharCode(e.which);
