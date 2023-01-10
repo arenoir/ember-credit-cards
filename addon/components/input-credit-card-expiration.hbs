@@ -1,0 +1,10 @@
+<Input
+  @type="tel"
+  @value={{this.value}}
+  autocomplete="cc-exp"
+  class="input-credit-card-expiration"
+  placeholder="•• / ••"
+  required="true"
+  ...attributes
+  {{on "keypress" this.keyPress}}
+/>

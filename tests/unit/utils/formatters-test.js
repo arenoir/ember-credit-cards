@@ -1,7 +1,7 @@
 import formatters from 'ember-credit-cards/utils/formatters';
 import { module, test } from 'qunit';
 
-module('formatters', function () {
+module('Unit | Utility | formatters', function () {
   module('formatExpiration', function () {
     test('it should format incomplete date', function (assert) {
       var result = formatters.formatExpiration('2');
@@ -11,6 +11,11 @@ module('formatters', function () {
     test('it should format full date', function (assert) {
       var result = formatters.formatExpiration('12', '2010');
       assert.equal(result, '12 / 2010');
+    });
+
+    test('it should handle backspace', function (assert) {
+      var result = formatters.formatExpiration('12', '', true);
+      assert.equal(result, '12');
     });
   });
 

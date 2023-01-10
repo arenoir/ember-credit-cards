@@ -1,6 +1,6 @@
-/* eslint-disable ember/no-classic-classes */
-import TextField from '@ember/component/text-field';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 import formatters from 'ember-credit-cards/utils/formatters';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
@@ -36,46 +36,45 @@ function parseInput(value) {
   return [mon, year];
 }
 
-export default TextField.extend({
-  classNames: ['input-credit-card-expiration'],
-  month: null,
-  year: null,
-  placeholder: '•• / ••',
-  autocomplete: 'cc-exp',
-  type: 'tel',
-  required: true,
+export default class InputCreditCardExpirationComponent extends Component {
+  @tracked
+  _value;
 
-  keyPress: function (e) {
+  constructor() {
+    super(...arguments);
+    this._value = formatters.formatExpiration(this.args.month, this.args.year);
+  }
+
+  get value() {
+    return this._value;
+  }
+
+  set value(value) {
+    var isBackspace = this._value.length - 1 === value.length;
+    var parsed = parseInput(value);
+
+    var month = parsed[0];
+    var year = parsed[1];
+
+    this._value = formatters.formatExpiration(month, year, isBackspace);
+
+    this.args.onUpdateMonth(month);
+    this.args.onUpdateYear(year);
+  }
+
+  @action
+  keyPress(e) {
     var digit = String.fromCharCode(e.which);
 
     if (!isDigitKeypress(e)) {
       return false;
     }
 
-    if (hasTextSelected(this.element)) {
+    if (hasTextSelected(e.target)) {
       return true;
     }
 
-    var value = this.element.value + digit;
+    var value = this._value + digit;
     return inputValid(value);
-  },
-
-  value: computed('month', 'year', {
-    get() {
-      return formatters.formatExpiration(this.month, this.year);
-    },
-    set(key, value) {
-      var parsed = parseInput(value);
-
-      var month = parsed[0];
-      var year = parsed[1];
-
-      this.setProperties({
-        month: month,
-        year: year,
-      });
-
-      return formatters.formatExpiration(month, year);
-    },
-  }),
-});
+  }
+}

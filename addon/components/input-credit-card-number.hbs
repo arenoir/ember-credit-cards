@@ -1,0 +1,10 @@
+<Input
+  @type="tel"
+  @value={{this.number}}
+  autocomplete="cc-number"
+  class="input-credit-card-number"
+  placeholder="•••• •••• •••• ••••"
+  required="true"
+  ...attributes
+  {{on "keypress" this.keyPress}}
+/>

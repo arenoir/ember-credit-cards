@@ -1,6 +1,5 @@
-/* eslint-disable ember/no-classic-classes */
-import TextField from '@ember/component/text-field';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import formatters from 'ember-credit-cards/utils/formatters';
 import cards from 'ember-credit-cards/utils/cards';
@@ -20,34 +19,27 @@ function inputValid(value) {
   }
 }
 
-export default TextField.extend({
-  classNames: ['input-credit-card-number'],
-  placeholder: '•••• •••• •••• ••••',
-  autocomplete: 'cc-number',
-  type: 'tel',
-  required: true,
+export default class InputCreditCardNumberComponent extends Component {
+  get number() {
+    return formatters.formatNumber(this.args.number);
+  }
 
-  keyPress: function (e) {
+  set number(value) {
+    this.args.onUpdate(value);
+  }
+
+  @action
+  keyPress(e) {
     if (!isDigitKeypress(e)) {
       return false;
     }
 
-    if (hasTextSelected(this.element)) {
+    if (hasTextSelected(e.target)) {
       return true;
     }
 
     var digit = String.fromCharCode(e.which);
-    var value = this.element.value + digit;
+    var value = this.args.number + digit;
     return inputValid(value);
-  },
-
-  value: computed('number', {
-    get() {
-      return formatters.formatNumber(this.number);
-    },
-    set(key, value) {
-      this.set('number', value);
-      return formatters.formatNumber(value);
-    },
-  }),
-});
+  }
+}

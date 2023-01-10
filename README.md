@@ -28,10 +28,10 @@ ember install ember-credit-cards
 Usage (Components)
 ------------------------------------------------------------------------------
 
-### credit-card-form
+### CreditCardForm
 Full credit card form with validations and formatting.
 
-Attributes:
+Arguments:
   * number
   * name
   * month
@@ -41,47 +41,47 @@ Attributes:
   * zipcodeRequired
 
 Events:
+  * onUpdate
   * onValidate
 
 
 Example:
 
-``` html
-//templates/credit-cards/new.hbs
+``` hbs
+<!-- templates/credit-cards/new.hbs -->
+<div>
+  <CreditCardForm
+    @number={{this.number}}
+    @name={{this.name}}
+    @month={{this.month}}
+    @year={{this.year}}
+    @cvc={{this.cvc}}
+    @onUpdate={{this.setValue}}
+    @onValidate={{mut disabled}}
+  />
+</div>
 
-  <div>
-    {{ credit-card-form
-       number=attrs.number
-       name=attrs.name
-       month=attrs.month
-       year=attrs.year
-       cvc=attrs.cvc
-       onValidate=(mut disabled)
-    }}
-  </div>
-
-  <button {{action "save"}} disabled={{disabled}}>
-    Save
-  </button>
-
+<button {{action "save"}} disabled={{disabled}}>
+  Save
+</button>
 ```
 
 
 
-### input-credit-card-number
+### `<InputCreditCardNumber />`
 Formats credit card number on entry. Discards non-numeric and extra characters. Parses sets number attribute.
 
 Attributes:
   * number
 
-### input-credit-card-cvc
+### `<InputCreditCardCvc />`
 
 Formats cvc number on entry. Discards non-numeric and extra characters. Parses sets cvc attribute.
 
 Attributes:
   * cvc
 
-### input-credit-card-expiration
+### `<InputCreditCardExpiration />`
 
 Validates and formats expiration date. Discards non-numeric and extra characters. Parses and sets month, year attributes.
 
@@ -90,7 +90,7 @@ Attributes:
   * year
 
 
-### input-credit-card-zipcode
+### `<InputCreditCardZipcode />`
 
 Validates and formats zip code. Discards non-numeric and extra characters. Sets zipcode attribute.
 
@@ -175,26 +175,23 @@ validations.validateZipcode('94611-24'); //=> false
 
 ## Custom Labels
 
-
 You can provide custom labels for localization.
 
-``` html
-  <div>
-    {{
-      credit-card-form
-      number=ccNumber
-      name=ccName
-      month=ccMonth
-      year=ccYear
-      cvc=ccCvc
-      numberLabel=(t 'credit-card-form.number')
-      securityCodeLabel=(t 'credit-card-form.security-code')
-      nameOnCardLabel=(t 'credit-card-form.name-on-card')
-      expirationLabel=(t 'credit-card-form.expiration')
-      zipCodeLabel=(t 'credit-card-form.zip-code')
-      on-validate='ccValidate'
-    }}
-  </div>
+``` hbs
+  <CreditCardForm
+    @number={{this.number}}
+    @name={{this.name}}
+    @month={{this.month}}
+    @year={{this.year}}
+    @cvc={{this.cvc}}
+    @numberLabel={{t 'credit-card-form.number'}}
+    @securityCodeLabel={{t 'credit-card-form.security-code'}}
+    @nameOnCardLabel={{t 'credit-card-form.name-on-card'}}
+    @expirationLabel={{t 'credit-card-form.expiration'}}
+    @zipCodeLabel={{t 'credit-card-form.zip-code'}}
+    @onUpdate={{this.setValue}}
+    @onValidate={{mut disabled}}
+  />
 ```
 
 Contributing

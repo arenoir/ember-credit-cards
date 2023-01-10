@@ -1,7 +1,7 @@
 import cards from 'ember-credit-cards/utils/cards';
 import { module, test } from 'qunit';
 
-module('cards', function () {
+module('Unit | Utility | cards', function () {
   test('should return Visa that begins with 40', function (assert) {
     assert.equal(cards.cardType('4012121212121212'), 'visa');
   });

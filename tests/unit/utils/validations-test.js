@@ -1,7 +1,7 @@
 import validations from 'ember-credit-cards/utils/validations';
 import { module, test } from 'qunit';
 
-module('validations', function () {
+module('Unit | Utility | validations', function () {
   test('Validating a card number', function (assert) {
     var validate = validations.validateNumber;
 
