@@ -3,13 +3,27 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
-module('credit-card-form', function (hooks) {
+module('Integration | Component | credit-card-form', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it should format Card labels correctly with default values', async function (assert) {
     assert.expect(5);
 
-    await render(hbs`{{credit-card-form zipcodeRequired=true}}`);
+    this.set('setValue', () => {});
+
+    await render(
+      hbs`
+        <CreditCardForm
+          @number={{this.number}}
+          @name={{this.name}}
+          @month={{this.month}}
+          @year={{this.year}}
+          @cvc={{this.cvc}}
+          @zipcodeRequired={{true}}
+          @onUpdate={{this.setValue}}
+        />
+      `
+    );
 
     assert.equal(
       this.element.querySelector('.cc-number .control-label').innerHTML,
@@ -41,11 +55,24 @@ module('credit-card-form', function (hooks) {
     );
   });
 
-  // tests for custom label
-
   test('it should format Card Number label correctly with custom numberLabel provided', async function (assert) {
     await render(
-      hbs`{{credit-card-form zipcodeRequired=true numberLabel="Kaartnummer" securityCodeLabel="Veiligheidscode" nameOnCardLabel="Naam op Kaart" expirationLabel="Vervalt op" zipCodeLabel="postcode"}}`
+      hbs`
+        <CreditCardForm
+          @number={{this.number}}
+          @name={{this.name}}
+          @month={{this.month}}
+          @year={{this.year}}
+          @cvc={{this.cvc}}
+          @zipcodeRequired={{true}}
+          @onUpdate={{this.setValue}}
+          @numberLabel="Kaartnummer"
+          @securityCodeLabel="Veiligheidscode"
+          @nameOnCardLabel="Naam op Kaart"
+          @expirationLabel="Vervalt op"
+          @zipCodeLabel="postcode"
+        />
+      `
     );
 
     assert.equal(

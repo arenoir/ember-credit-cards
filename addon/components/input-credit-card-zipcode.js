@@ -1,38 +1,35 @@
-/* eslint-disable ember/no-classic-classes */
-import TextField from '@ember/component/text-field';
-import { computed } from '@ember/object';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
 import formatters from 'ember-credit-cards/utils/formatters';
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
-export default TextField.extend({
-  type: 'tel',
-  classNames: ['input-credit-card-zipcode'],
-  autocomplete: 'none',
-  autocorrect: 'off',
+function inputValid(value) {
+  return value.length <= 10;
+}
 
-  keyPress: function (e) {
+export default class InputCreditCardZipcodeComponent extends Component {
+  get zipcode() {
+    return formatters.formatZipcode(this.args.zipcode);
+  }
+
+  set zipcode(value) {
+    this.args.onUpdate(value);
+  }
+
+  @action
+  keyPress(e) {
     var digit = String.fromCharCode(e.which);
 
     if (!isDigitKeypress(e)) {
       return false;
     }
 
-    if (hasTextSelected(this.element)) {
+    if (hasTextSelected(e.target)) {
       return true;
     }
 
-    var value = this.element.value + digit;
-    return value.length <= 10;
-  },
-
-  value: computed('zipcode', {
-    get() {
-      return formatters.formatZipcode(this.zipcode);
-    },
-    set(key, value) {
-      this.set('zipcode', value);
-      return formatters.formatZipcode(value);
-    },
-  }),
-});
+    var value = this._zipcode + digit;
+    return inputValid(value);
+  }
+}

@@ -1,0 +1,9 @@
+<Input
+  @type="tel"
+  @value={{this.zipcode}}
+  autocomplete="none"
+  autocorrect="off"
+  class="input-credit-card-zipcode"
+  ...attributes
+  {{on "keypress" this.keyPress}}
+/>

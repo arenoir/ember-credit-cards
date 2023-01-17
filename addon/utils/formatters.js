@@ -37,7 +37,7 @@ function formatNumber(num) {
   }
 }
 
-function formatExpiration(mon, year) {
+function formatExpiration(mon, year, isBackspace) {
   var sep = '';
 
   mon = mon || '';
@@ -47,11 +47,19 @@ function formatExpiration(mon, year) {
     mon = '0' + mon;
   }
 
-  if (mon.length === 2) {
-    sep = ' / ';
+  if (year !== '' || !isBackspace) {
+    if (mon.length === 2) {
+      sep = ' / ';
+    }
   }
 
   return mon + sep + year;
+}
+
+function formatCvc(value) {
+  if (value) {
+    return value.toString().replace(/\D/g, '').slice(0, 4);
+  }
 }
 
 function formatZipcode(zip) {
@@ -71,5 +79,6 @@ function formatZipcode(zip) {
 export default {
   formatNumber: formatNumber,
   formatExpiration: formatExpiration,
+  formatCvc: formatCvc,
   formatZipcode: formatZipcode,
 };

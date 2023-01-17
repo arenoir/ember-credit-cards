@@ -1,0 +1,8 @@
+<Input
+  @type="tel"
+  @value={{this.cvc}}
+  class="input-credit-card-cvc"
+  placeholder="•••"
+  ...attributes
+  {{on "keypress" this.keyPress}}
+/>

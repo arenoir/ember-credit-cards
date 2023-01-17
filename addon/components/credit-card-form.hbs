@@ -1,0 +1,56 @@
+<form class="credit-card-form {{if this.isValid 'isValid'}}" ...attributes>
+  <div class="clearfix">
+    <div class="{{if this.numberValid 'has-success'}} form-group cc-number">
+      <label class="control-label">{{if @numberLabel @numberLabel 'Card Number'}}</label>
+      <InputCreditCardNumber
+        @number={{@number}}
+        @onUpdate={{fn this.setValue 'number'}}
+        class="form-control"
+      />
+    </div>
+
+    <div class="{{if this.cvcValid 'has-success'}} form-group cc-cvc">
+      <label class="control-label">{{if @securityCodeLabel @securityCodeLabel 'Security Code'}}</label>
+      <InputCreditCardCvc
+        @cvc={{@cvc}}
+        @onUpdate={{fn this.setValue 'cvc'}}
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <div class="{{if this.nameValid 'has-success'}} form-group cc-name">
+      <label class="control-label">{{ if @nameOnCardLabel @nameOnCardLabel 'Name on Card'}}</label>
+      {{!-- template-lint-disable require-input-label --}}
+      <Input @type="text" @value={{@name}}  class="form-control" />
+    </div>
+
+    <div class="{{if this.expirationValid 'has-success'}} form-group cc-expiration">
+      <label class="control-label">{{ if @expirationLabel @expirationLabel 'Expiration'}}</label>
+      <InputCreditCardExpiration
+        @month={{@month}}
+        @year={{@year}}
+        @onUpdateMonth={{fn this.setValue 'month'}}
+        @onUpdateYear={{fn this.setValue 'year'}}
+        class="form-control"
+      />
+    </div>
+  </div>
+
+  {{#if @zipcodeRequired}}
+    <div class="{{if this.zipcodeValid 'has-success'}} form-group cc-zipcode">
+      <label class="control-label">{{ if @zipCodeLabel @zipCodeLabel 'Zip Code'}}</label>
+      <InputCreditCardZipcode
+        @zipcode={{@zipcode}}
+        @onUpdate={{fn this.setValue "zipcode"}}
+        class="form-control"
+      />
+    </div>
+  {{/if}}
+
+
+  <div class="type">
+    {{this.type}}
+  </div>
+</form>

@@ -1,81 +1,59 @@
-/* eslint-disable ember/require-tagless-components */
-/* eslint-disable ember/no-classic-components */
-/* eslint-disable ember/no-classic-classes */
-/* eslint-disable ember/no-observers */
-
-import { and } from '@ember/object/computed';
-import Component from '@ember/component';
-import { computed, observer } from '@ember/object';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 import Validations from 'ember-credit-cards/utils/validations';
 import Cards from 'ember-credit-cards/utils/cards';
 
-export default Component.extend({
-  tagName: 'form',
-  classNames: ['credit-card-form'],
-  classNameBindings: ['isValid'],
-  name: null,
-  number: null,
-  month: null,
-  year: null,
-  cvc: null,
-  zipcode: null,
-  zipcodeRequired: false,
-  onValidate() {},
+export default class CreditCardFormComponent extends Component {
+  get isValid() {
+    return (
+      this.nameValid &&
+      this.numberValid &&
+      this.expirationValid &&
+      this.cvcValid &&
+      this.zipcodeValid
+    );
+  }
 
-  isValid: and(
-    'nameValid',
-    'numberValid',
-    'expirationValid',
-    'cvcValid',
-    'zipcodeValid'
-  ),
-
-  becameValid: observer('isValid', function () {
-    this.onValidate(this.isValid);
-  }),
-
-  nameValid: computed('name', function () {
-    var name = this.name;
+  get nameValid() {
+    var name = this.args.name;
 
     if (name) {
       return true;
     }
 
     return false;
-  }),
+  }
 
-  numberValid: computed('number', function () {
-    var number = this.number;
+  get numberValid() {
+    return Validations.validateNumber(this.args.number);
+  }
 
-    return Validations.validateNumber(number);
-  }),
-
-  expirationValid: computed('month', 'year', function () {
-    var month = this.month;
-    var year = this.year;
+  get expirationValid() {
+    var month = this.args.month;
+    var year = this.args.year;
 
     return Validations.validateExpiration(month, year);
-  }),
+  }
 
-  cvcValid: computed('cvc', 'type', function () {
-    var cvc = this.cvc;
+  get cvcValid() {
+    var cvc = this.args.cvc;
     var type = this.type;
 
     return Validations.validateCVC(cvc, type);
-  }),
+  }
 
-  zipcodeValid: computed('zipcodeRequired', 'zipcode', function () {
-    if (this.zipcodeRequired) {
-      var zip = this.zipcode;
+  get zipcodeValid() {
+    if (this.args.zipcodeRequired) {
+      var zip = this.args.zipcode;
 
       return Validations.validateZipcode(zip);
     }
 
     return true;
-  }),
+  }
 
-  type: computed('number', function () {
-    var number = this.number;
+  get type() {
+    var number = this.args.number;
     var card = Cards.fromNumber(number);
 
     if (card) {
@@ -83,5 +61,15 @@ export default Component.extend({
     } else {
       return '';
     }
-  }),
-});
+  }
+
+  @action
+  setValue(key, value) {
+    this.args.onUpdate(key, value);
+    this._onValidate();
+  }
+
+  _onValidate() {
+    (this.args.onValidate || (() => {}))(this.isValid);
+  }
+}
