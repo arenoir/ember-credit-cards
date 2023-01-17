@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { render } from '@ember/test-helpers';
 
-module('credit-card-form', function(hooks) {
+module('credit-card-form', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it should format Card labels correctly with default values', async function(assert) {
+  test('it should format Card labels correctly with default values', async function (assert) {
     assert.expect(5);
 
     await render(hbs`{{credit-card-form zipcodeRequired=true}}`);
@@ -43,27 +43,29 @@ module('credit-card-form', function(hooks) {
 
   // tests for custom label
 
-  test('it should format Card Number label correctly with custom numberLabel provided', async function(assert) {
-    await render(hbs`{{credit-card-form zipcodeRequired=true numberLabel="Kaartnummer" securityCodeLabel="Veiligheidscode" nameOnCardLabel="Naam op Kaart" expirationLabel="Vervalt op" zipCodeLabel="postcode"}}`);
+  test('it should format Card Number label correctly with custom numberLabel provided', async function (assert) {
+    await render(
+      hbs`{{credit-card-form zipcodeRequired=true numberLabel="Kaartnummer" securityCodeLabel="Veiligheidscode" nameOnCardLabel="Naam op Kaart" expirationLabel="Vervalt op" zipCodeLabel="postcode"}}`
+    );
 
     assert.equal(
       this.element.querySelector('.cc-number .control-label').innerHTML,
-      'Kaartnummer',
+      'Kaartnummer'
     );
 
     assert.equal(
       this.element.querySelector('.cc-cvc .control-label').innerHTML,
-      'Veiligheidscode',
+      'Veiligheidscode'
     );
 
     assert.equal(
       this.element.querySelector('.cc-name .control-label').innerHTML,
-      'Naam op Kaart',
+      'Naam op Kaart'
     );
 
     assert.equal(
       this.element.querySelector('.cc-expiration .control-label').innerHTML,
-      'Vervalt op',
+      'Vervalt op'
     );
 
     assert.equal(
@@ -71,5 +73,4 @@ module('credit-card-form', function(hooks) {
       'postcode'
     );
   });
-
 });

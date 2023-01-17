@@ -7,78 +7,89 @@ var cards = [
     format: defaultFormat,
     length: [16],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'maestro',
     pattern: /^(5(018|0[23]|[68])|6(39|7))/,
     format: defaultFormat,
     length: [12, 13, 14, 15, 16, 17, 18, 19],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'forbrugsforeningen',
     pattern: /^600/,
     format: defaultFormat,
     length: [16],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'dankort',
     pattern: /^5019/,
     format: defaultFormat,
     length: [16],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'visa',
     pattern: /^4/,
     format: defaultFormat,
     length: [13, 16],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'mastercard',
-    pattern: /^5[1-5]\d{14}$|^2(?:2(?:2[1-9]|[3-9]\d)|[3-6]\d\d|7(?:[01]\d|20))\d{12}$/,
+    pattern:
+      /^5[1-5]\d{14}$|^2(?:2(?:2[1-9]|[3-9]\d)|[3-6]\d\d|7(?:[01]\d|20))\d{12}$/,
     format: defaultFormat,
     length: [16],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'amex',
     pattern: /^3[47]/,
     format: /(\d{1,4})(\d{1,6})?(\d{1,5})?/,
     length: [15],
     cvcLength: [4],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'dinersclub',
     pattern: /^3[0689]/,
     format: /(\d{1,4})(\d{1,6})?(\d{1,4})?/,
     length: [14],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'discover',
     pattern: /^6([045]|22)/,
     format: defaultFormat,
     length: [16],
     cvcLength: [3],
-    luhn: true
-  },{
+    luhn: true,
+  },
+  {
     type: 'unionpay',
     pattern: /^(62|88)/,
     format: defaultFormat,
-    length: [16,17,18,19],
+    length: [16, 17, 18, 19],
     cvcLength: [3],
-    luhn: false
-  },{
+    luhn: false,
+  },
+  {
     type: 'jcb',
     pattern: /^35/,
     format: defaultFormat,
     length: [16],
     cvcLength: [3],
-    luhn: true
-  }
+    luhn: true,
+  },
 ];
 
 function cardFromNumber(num) {
@@ -135,5 +146,5 @@ export default {
   cardType: cardTypeFromNumber,
   fromNumber: cardFromNumber,
   fromType: cardFromType,
-  luhnCheck: luhnCheck
+  luhnCheck: luhnCheck,
 };

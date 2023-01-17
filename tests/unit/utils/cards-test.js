@@ -1,25 +1,24 @@
 import cards from 'ember-credit-cards/utils/cards';
 import { module, test } from 'qunit';
 
-module('cards', function() {
-  test('should return Visa that begins with 40', function(assert) {
+module('cards', function () {
+  test('should return Visa that begins with 40', function (assert) {
     assert.equal(cards.cardType('4012121212121212'), 'visa');
   });
 
-  test('that begins with 5 should return MasterCard', function(assert) {
+  test('that begins with 5 should return MasterCard', function (assert) {
     assert.equal(cards.cardType('5555555555554444'), 'mastercard');
   });
 
-  test('that begins with 34 should return American Express', function(assert) {
+  test('that begins with 34 should return American Express', function (assert) {
     assert.equal(cards.cardType('3412121212121212'), 'amex');
   });
 
-  test('that is not numbers should return null', function(assert) {
-        assert.equal(cards.cardType('aoeu'), null);
+  test('that is not numbers should return null', function (assert) {
+    assert.equal(cards.cardType('aoeu'), null);
   });
 
-  test('should return correct card for all test numbers', function(assert) {
-
+  test('should return correct card for all test numbers', function (assert) {
     assert.equal(cards.cardType('4917300800000000'), 'visaelectron');
 
     assert.equal(cards.cardType('6759649826438453'), 'maestro');
@@ -57,6 +56,5 @@ module('cards', function() {
 
     assert.equal(cards.cardType('3530111333300000'), 'jcb');
     assert.equal(cards.cardType('3566002020360505'), 'jcb');
-
   });
 });

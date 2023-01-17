@@ -1,3 +1,4 @@
+/* eslint-disable ember/no-classic-classes */
 import TextField from '@ember/component/text-field';
 import { computed } from '@ember/object';
 import formatters from 'ember-credit-cards/utils/formatters';
@@ -18,7 +19,6 @@ function inputValid(value) {
   return true;
 }
 
-
 function parseInput(value) {
   var parts = (value + '').match(/^\D*(\d{1,2})(\D+)?(\d{1,4})?/);
 
@@ -29,13 +29,12 @@ function parseInput(value) {
   var mon = parts[1] || '';
   var year = parts[3] || '';
 
-  if (mon.length === 1 && (mon !== '0' && mon !== '1')) {
-    mon = "0" + mon;
+  if (mon.length === 1 && mon !== '0' && mon !== '1') {
+    mon = '0' + mon;
   }
 
   return [mon, year];
 }
-
 
 export default TextField.extend({
   classNames: ['input-credit-card-expiration'],
@@ -46,7 +45,7 @@ export default TextField.extend({
   type: 'tel',
   required: true,
 
-  keyPress: function(e) {
+  keyPress: function (e) {
     var digit = String.fromCharCode(e.which);
 
     if (!isDigitKeypress(e)) {
@@ -73,10 +72,10 @@ export default TextField.extend({
 
       this.setProperties({
         month: month,
-        year: year
+        year: year,
       });
 
       return formatters.formatExpiration(month, year);
-    }
-  })
+    },
+  }),
 });

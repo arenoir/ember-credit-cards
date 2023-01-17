@@ -1,3 +1,4 @@
+/* eslint-disable ember/no-classic-classes */
 import TextField from '@ember/component/text-field';
 import { computed } from '@ember/object';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
@@ -10,7 +11,7 @@ export default TextField.extend({
   autocomplete: 'none',
   autocorrect: 'off',
 
-  keyPress: function(e) {
+  keyPress: function (e) {
     var digit = String.fromCharCode(e.which);
 
     if (!isDigitKeypress(e)) {
@@ -32,6 +33,6 @@ export default TextField.extend({
     set(key, value) {
       this.set('zipcode', value);
       return formatters.formatZipcode(value);
-    }
-  })
+    },
+  }),
 });

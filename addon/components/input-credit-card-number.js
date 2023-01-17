@@ -1,3 +1,4 @@
+/* eslint-disable ember/no-classic-classes */
 import TextField from '@ember/component/text-field';
 import { computed } from '@ember/object';
 import hasTextSelected from 'ember-credit-cards/utils/has-text-selected';
@@ -19,7 +20,6 @@ function inputValid(value) {
   }
 }
 
-
 export default TextField.extend({
   classNames: ['input-credit-card-number'],
   placeholder: '•••• •••• •••• ••••',
@@ -27,7 +27,7 @@ export default TextField.extend({
   type: 'tel',
   required: true,
 
-  keyPress: function(e) {
+  keyPress: function (e) {
     if (!isDigitKeypress(e)) {
       return false;
     }
@@ -41,7 +41,6 @@ export default TextField.extend({
     return inputValid(value);
   },
 
-
   value: computed('number', {
     get() {
       return formatters.formatNumber(this.number);
@@ -49,6 +48,6 @@ export default TextField.extend({
     set(key, value) {
       this.set('number', value);
       return formatters.formatNumber(value);
-    }
-  })
+    },
+  }),
 });
