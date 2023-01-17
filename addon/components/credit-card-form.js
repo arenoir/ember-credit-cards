@@ -1,3 +1,8 @@
+/* eslint-disable ember/require-tagless-components */
+/* eslint-disable ember/no-classic-components */
+/* eslint-disable ember/no-classic-classes */
+/* eslint-disable ember/no-observers */
+
 import { and } from '@ember/object/computed';
 import Component from '@ember/component';
 import { computed, observer } from '@ember/object';
@@ -15,15 +20,21 @@ export default Component.extend({
   cvc: null,
   zipcode: null,
   zipcodeRequired: false,
-  onValidate(){},
+  onValidate() {},
 
-  isValid: and('nameValid', 'numberValid', 'expirationValid', 'cvcValid', 'zipcodeValid'),
+  isValid: and(
+    'nameValid',
+    'numberValid',
+    'expirationValid',
+    'cvcValid',
+    'zipcodeValid'
+  ),
 
-  becameValid: observer('isValid', function() {
+  becameValid: observer('isValid', function () {
     this.onValidate(this.isValid);
   }),
 
-  nameValid: computed('name', function() {
+  nameValid: computed('name', function () {
     var name = this.name;
 
     if (name) {
@@ -33,27 +44,27 @@ export default Component.extend({
     return false;
   }),
 
-  numberValid: computed('number', function() {
+  numberValid: computed('number', function () {
     var number = this.number;
 
     return Validations.validateNumber(number);
   }),
 
-  expirationValid: computed('month', 'year', function() {
+  expirationValid: computed('month', 'year', function () {
     var month = this.month;
-    var year  = this.year;
+    var year = this.year;
 
     return Validations.validateExpiration(month, year);
   }),
 
-  cvcValid: computed('cvc', 'type', function() {
+  cvcValid: computed('cvc', 'type', function () {
     var cvc = this.cvc;
     var type = this.type;
 
     return Validations.validateCVC(cvc, type);
   }),
 
-  zipcodeValid: computed('zipcodeRequired', 'zipcode', function() {
+  zipcodeValid: computed('zipcodeRequired', 'zipcode', function () {
     if (this.zipcodeRequired) {
       var zip = this.zipcode;
 
@@ -63,7 +74,7 @@ export default Component.extend({
     return true;
   }),
 
-  type: computed('number', function() {
+  type: computed('number', function () {
     var number = this.number;
     var card = Cards.fromNumber(number);
 
@@ -72,5 +83,5 @@ export default Component.extend({
     } else {
       return '';
     }
-  })
+  }),
 });

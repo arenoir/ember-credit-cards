@@ -17,15 +17,16 @@ function validateNumber(num) {
   if (card) {
     var cardNumbers = A(card.length);
 
-    return ( cardNumbers.includes(num.length)) && (card.luhn === false || luhnCheck(num));
+    return (
+      cardNumbers.includes(num.length) &&
+      (card.luhn === false || luhnCheck(num))
+    );
   }
 
   return false;
 }
 
-
 function validateExpiration(month, year) {
-
   if (typeof month === 'string') {
     month = parseInt(month);
   }
@@ -64,7 +65,6 @@ function validateExpiration(month, year) {
   return edate > today;
 }
 
-
 function validateCVC(cvc, type) {
   cvc = (cvc + '').trim();
 
@@ -83,7 +83,6 @@ function validateCVC(cvc, type) {
   }
 }
 
-
 function validateZipcode(zip) {
   zip = (zip + '').replace(/\s+|-/g, '');
 
@@ -99,10 +98,9 @@ function validateZipcode(zip) {
   return false;
 }
 
-
 export default {
   validateNumber: validateNumber,
   validateExpiration: validateExpiration,
   validateCVC: validateCVC,
-  validateZipcode: validateZipcode
+  validateZipcode: validateZipcode,
 };

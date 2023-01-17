@@ -13,6 +13,7 @@
 <div class="clearfix">
   <div class="{{if this.nameValid 'has-success'}} form-group cc-name">
     <label class="control-label">{{ if this.nameOnCardLabel this.nameOnCardLabel 'Name on Card'}}</label>
+    {{!-- template-lint-disable require-input-label --}}
     <Input @type="text" @value={{this.name}} class="form-control" />
   </div>
 

@@ -1,86 +1,84 @@
 import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | is digit keypress', function() {
-  test('it returns false if event is a keypress is letter', function(assert) {
+module('Unit | Utility | is digit keypress', function () {
+  test('it returns false if event is a keypress is letter', function (assert) {
     var e = {
-      keyCode: 70
+      keyCode: 70,
     };
 
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, false);
+
+    assert.false(result);
   });
 
-
-  test('it returns true if keycode is a number', function(assert) {
+  test('it returns true if keycode is a number', function (assert) {
     var e = {
-      keyCode: 50
+      keyCode: 50,
     };
-    
+
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, true);
+
+    assert.true(result);
   });
 
-  test('it returns true if keypress is a number', function(assert) {
+  test('it returns true if keypress is a number', function (assert) {
     var e = {
-      which: 50
+      which: 50,
     };
-    
+
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, true);
+
+    assert.true(result);
   });
 
-
-  test('it returns true if keypress is a backspace', function(assert) {
+  test('it returns true if keypress is a backspace', function (assert) {
     var e = {
-      keyCode: 8
+      keyCode: 8,
     };
-    
+
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, true);
+
+    assert.true(result);
   });
 
-  test('it returns true if keypress is a tab', function(assert) {
+  test('it returns true if keypress is a tab', function (assert) {
     var e = {
-      keyCode: 9
+      keyCode: 9,
     };
-    
+
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, true);
+
+    assert.true(result);
   });
 
-  test('it returns true if keypress is delete', function(assert) {
+  test('it returns true if keypress is delete', function (assert) {
     var e = {
-      keyCode: 46
+      keyCode: 46,
     };
-    
+
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, true);
+
+    assert.true(result);
   });
 
-  test('it returns true if keypress is enter', function(assert) {
+  test('it returns true if keypress is enter', function (assert) {
     var e = {
-      keyCode: 13
+      keyCode: 13,
     };
-    
+
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, true);
+
+    assert.true(result);
   });
 
-  test('it returns true if keypress is escape', function(assert) {
+  test('it returns true if keypress is escape', function (assert) {
     var e = {
-      keyCode: 27
+      keyCode: 27,
     };
-    
+
     var result = isDigitKeypress(e);
-    
-    assert.equal(result, true);
+
+    assert.true(result);
   });
 });
