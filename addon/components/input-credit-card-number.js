@@ -7,8 +7,12 @@ import isDigitKeypress from 'ember-credit-cards/utils/is-digit-keypress';
 
 const cardFromNumber = cards.fromNumber;
 
+function stripSpaces(value) {
+  return (value + '').replace(/\D/g, '');
+}
+
 function inputValid(value) {
-  value = (value + '').replace(/\D/g, '');
+  value = stripSpaces(value);
 
   var card = cardFromNumber(value);
 
@@ -25,7 +29,9 @@ export default class InputCreditCardNumberComponent extends Component {
   }
 
   set number(value) {
-    this.args.onUpdate(value);
+    if (inputValid(value)) {
+      this.args.onUpdate(stripSpaces(value));
+    }
   }
 
   @action
