@@ -8,28 +8,28 @@ module('Unit | Utility | validations', function () {
     assert.false(validate(''), 'should fail if empty');
     assert.false(
       validate('                    '),
-      'should fail if is a bunch of spaces'
+      'should fail if is a bunch of spaces',
     );
     assert.true(validate('4242424242424242'), 'should success if is valid');
     assert.true(
       validate('4242-4242-4242-4242'),
-      'that has dashes in it but is valid'
+      'that has dashes in it but is valid',
     );
     assert.true(
       validate('4242 4242 4242 4242'),
-      'should succeed if it has spaces in it but is valid'
+      'should succeed if it has spaces in it but is valid',
     );
     assert.false(
       validate('4242424242424241'),
-      'that does not pass the luhn checker'
+      'that does not pass the luhn checker',
     );
     assert.false(
       validate('42424242424242424'),
-      'should fail if is more than 16 digits'
+      'should fail if is more than 16 digits',
     );
     assert.false(
       validate('424242424'),
-      'should fail if is less than 10 digits'
+      'should fail if is less than 10 digits',
     );
     assert.false(validate('4242424e42424241'), 'should fail with non-digits');
   });
@@ -49,19 +49,19 @@ module('Unit | Utility | validations', function () {
 
     assert.false(
       validate('123', 'amex'),
-      'should not validate a three digit number with card type amex'
+      'should not validate a three digit number with card type amex',
     );
     assert.true(
       validate('123', 'visa'),
-      'should validate a three digit number with a card type other than amex'
+      'should validate a three digit number with a card type other than amex',
     );
     assert.false(
       validate('1234', 'visa'),
-      'should not validate a four digit number with a card type other than amex'
+      'should not validate a four digit number with a card type other than amex',
     );
     assert.true(
       validate('1234', 'amex'),
-      'should validate a four digit number with card type amex'
+      'should validate a four digit number with card type amex',
     );
   });
 
@@ -71,36 +71,36 @@ module('Unit | Utility | validations', function () {
 
     assert.false(
       validate(t.getMonth() + 1, t.getFullYear() - 1),
-      'should fail expires is before the current year'
+      'should fail expires is before the current year',
     );
     assert.false(
       validate(t.getMonth(), t.getFullYear()),
-      'should fail if expires in the current year but before current month'
+      'should fail if expires in the current year but before current month',
     );
     assert.false(
       validate(13, t.getFullYear()),
-      'should fail if month is invalid'
+      'should fail if month is invalid',
     );
     assert.true(
       validate(t.getMonth() + 1, t.getFullYear()),
-      'should pass if this year and month'
+      'should pass if this year and month',
     );
     assert.true(
       validate(t.getMonth(), t.getFullYear() + 1),
-      'should pass if after this year'
+      'should pass if after this year',
     );
     assert.true(
       validate(t.getMonth() + 1, t.getFullYear() - 2000),
-      'should pass with two-digit year'
+      'should pass with two-digit year',
     );
     assert.false(
       validate(t.getMonth() + 1, 99),
-      'should fail with two-digit year in the past (i.e. 1990s)'
+      'should fail with two-digit year in the past (i.e. 1990s)',
     );
 
     assert.true(
       validate(t.getMonth() + 1 + '', t.getFullYear() + ''),
-      'should pass with string numbers'
+      'should pass with string numbers',
     );
 
     assert.false(validate('h12', '3300'), 'should fail with non-numbers');
@@ -118,7 +118,7 @@ module('Unit | Utility | validations', function () {
     assert.true(validate(946112370), 'returns true if valid zip plus 4');
     assert.true(
       validate('94611-2370'),
-      'returns true if valid zip plus 4 with dash'
+      'returns true if valid zip plus 4 with dash',
     );
 
     assert.false(validate(956), 'returns false if too short');
